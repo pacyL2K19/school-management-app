@@ -20,7 +20,9 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": false
   },
-  "extends": "expo/tsconfig.base",
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules",
     "babel.config.js",

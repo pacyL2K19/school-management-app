@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useContext } from 'react'
 import { NavigationScreenProp,NavigationRoute, NavigationContext, NavigationParams } from 'react-navigation'
 

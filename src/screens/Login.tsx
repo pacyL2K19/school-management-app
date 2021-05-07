@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state: ApplicationState) => ({
-  shoppingReducer: state.shoppingReducer,
   userReducer: state.userReducer
 })
 

@@ -3,9 +3,8 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
-  TextInput,
-  Image
+  ScrollView,
+  Dimensions
 } from 'react-native'
 import { TextField } from '../components'
 import { ButtonWithTitle } from '../components/ButtonWithTittle/ButtonWithTitle'
@@ -31,7 +30,7 @@ const _LoginScreen: React.FC<LoginProps> = ({
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
-  const [title, setTitle] = useState('Login')
+  const [title, setTitle] = useState('Connexion')
   const [isSignup, setIsSignup] = useState(false)
 
   const onTapAuthenticate = () => {
@@ -44,46 +43,73 @@ const _LoginScreen: React.FC<LoginProps> = ({
 
   const onTapOptions = () => {
     setIsSignup(!isSignup)
-    setTitle(!isSignup ? 'Signup' : 'Login')
+    setTitle(!isSignup ? 'Se connecter' : 'Connexion')
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.navigation}>
-        <Text style={{ fontSize: 30, fontWeight: '400' }}>{title}</Text>
+        <Text style={{
+          fontSize: 30,
+          marginBottom: 50,
+          fontWeight: '400'
+        }}>
+          {title}
+        </Text>
       </View>
       <View style={styles.body}>
         <TextField
-          placeholder='Email ID'
+          placeholder='Adresse email'
           onTextChange={setEmail}
           isSecure={false}
         />
 
         {isSignup && (
-          <TextField
-            placeholder='Phone Number'
-            onTextChange={setPhone}
-            isSecure={false}
-          />
+          <>
+            <TextField
+              placeholder='Numero de telephone'
+              onTextChange={setPhone}
+              isSecure={false}
+            />
+            <TextField
+              placeholder='Classe'
+              onTextChange={setPhone}
+              isSecure={false}
+            />
+          </>
         )}
         <TextField
-          placeholder='Password'
+          placeholder='Mot de passe'
           onTextChange={setPassword}
           isSecure={true}
         />
+        {isSignup && (
+          <>
+            <TextField
+              placeholder='Confirmer mot de passe'
+              onTextChange={setPhone}
+              isSecure={true}
+            />
+            <TextField
+              placeholder='OTP Code'
+              onTextChange={setPhone}
+              isSecure={false}
+            />
+          </>
+        )}
 
         <ButtonWithTitle
           title={title}
           height={50}
-          width={350}
+          width={Dimensions.get('window').width / 2}
           onTap={onTapAuthenticate}
         />
 
         <ButtonWithTitle
           title={
             !isSignup
-              ? 'No Account? Signup Here'
-              : 'Have an Account? Login Here'
+              ? 'Pas de compte ? En creer'
+              : 'Vous avez deja un compte ? Connectez-vous'
           }
           height={50}
           width={350}
@@ -92,15 +118,27 @@ const _LoginScreen: React.FC<LoginProps> = ({
         />
       </View>
       <View style={styles.footer}></View>
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  navigation: { flex: 3, justifyContent: 'center', paddingLeft: 30 },
-  body: { flex: 6, justifyContent: 'center', alignItems: 'center' },
-  footer: { flex: 3 }
+  container: {
+    paddingTop: Dimensions.get('window').height / 8
+  },
+  navigation: {
+    flex: 3,
+    justifyContent: 'center',
+    paddingLeft: 30 
+  },
+  body: {
+    flex: 6,
+    justifyContent: 'center',
+    alignItems: 'center' 
+  },
+  footer: {
+    flex: 3
+  }
 })
 
 const mapStateToProps = (state: ApplicationState) => ({

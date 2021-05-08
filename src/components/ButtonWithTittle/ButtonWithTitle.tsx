@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-color-literals */
+/* eslint-disable @typescript-eslint/ban-types */
 import React, { } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
@@ -39,14 +39,14 @@ const ButtonWithTitle: React.FC<ButtonProps> = ({ onTap, width, height, title, i
 
 
 const styles = StyleSheet.create({
-    btn: { 
+    btn: {
         flex: 1,
         display: 'flex',  
         maxHeight: 50,
         justifyContent: 'center', 
-        alignItems: 'center', 
-        backgroundColor: '#f15b5d',
-        borderRadius:30,
+        alignItems: 'center',
+        backgroundColor: '#3c8df7',
+        borderRadius: 10,
         alignSelf: 'center',
         marginTop: 20,
     },

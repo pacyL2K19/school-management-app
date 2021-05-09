@@ -52,6 +52,11 @@ type Teacher = {
     qualification: Qualification
 };
 
+type HomeOption = {
+    label: string,
+    routeName: string
+}
+
 interface Class {
     isCO: boolean;
     isCT: boolean;

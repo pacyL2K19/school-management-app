@@ -45,10 +45,10 @@ interface Qualification {
     longetivity: number
 };
 
-interface Teacher {
-    identity: Identity;
+type Teacher = {
+    identity: Identity,
     address: Address,
-    courses: [Course]
+    courses: [Course],
     qualification: Qualification
 };
 
@@ -66,20 +66,20 @@ interface Absence {
     justified: boolean
 }
 
-interface Cotation {
-    student: Student;
-    course: Course;
-    period: Period;
-    type: TypeOfCotation;
-    period: Periods;
+type Cotation = {
+    student: Student,
+    course: Course,
+    period: Period,
+    type: TypeOfCotation,
+    period: Periods
     
 }
 
-interface Students {
-    identity: Identity;
-    guardians: [Guardian]; // Tutaire in french
-    class: Class;
-    address: Address;
-    absences: [Absence];
+type Students = {
+    identity: Identity,
+    guardians: [Guardian], // Tutaire in french
+    class: Class,
+    address: Address,
+    absences: [Absence],
     Cotes: [Cotation]
 }

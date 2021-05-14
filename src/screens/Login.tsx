@@ -4,7 +4,9 @@ import {
   View,
   Text,
   ScrollView,
-  Dimensions
+  Dimensions,
+  Image,
+  TouchableOpacity
 } from 'react-native'
 import { TextField } from '../components'
 import { ButtonWithTitle } from '../components/ButtonWithTittle/ButtonWithTitle'
@@ -15,6 +17,9 @@ import {
   OnUserSignup,
   UserState
 } from '../redux'
+
+import topImg from '../assets/logo.jpg'
+import { whiteColor } from '../core'
 
 interface LoginProps {
   OnUserLogin: Function
@@ -43,15 +48,20 @@ const _LoginScreen: React.FC<LoginProps> = ({
 
   const onTapOptions = () => {
     setIsSignup(!isSignup)
-    setTitle(!isSignup ? 'Se connecter' : 'Connexion')
+    setTitle(!isSignup ? `S'inscrire` : 'Connexion')
   }
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.navigation}>
+      <Image
+        source={topImg}
+        style={styles.img}
+      />
+      <View>
         <Text style={{
-          fontSize: 30,
-          marginBottom: 50,
+          fontSize: 25,
+          textAlign: 'center',
+          marginBottom: 30,
           fontWeight: '400'
         }}>
           {title}
@@ -83,6 +93,15 @@ const _LoginScreen: React.FC<LoginProps> = ({
           onTextChange={setPassword}
           isSecure={true}
         />
+        {
+          !isSignup && (
+            <TouchableOpacity>
+              <Text style={styles.textLink}>
+                Mot de passe oublie ?
+              </Text>
+            </TouchableOpacity>
+          )
+        }
         {isSignup && (
           <>
             <TextField
@@ -101,7 +120,7 @@ const _LoginScreen: React.FC<LoginProps> = ({
         <ButtonWithTitle
           title={title}
           height={50}
-          width={Dimensions.get('window').width / 2}
+          width={Dimensions.get('window').width - 60}
           onTap={onTapAuthenticate}
         />
 
@@ -112,33 +131,36 @@ const _LoginScreen: React.FC<LoginProps> = ({
               : 'Vous avez deja un compte ? Connectez-vous'
           }
           height={50}
-          width={350}
+          width={Dimensions.get('window').width}
           onTap={onTapOptions}
           isNoBg={true}
         />
       </View>
-      <View style={styles.footer}></View>
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Dimensions.get('window').height / 8
+    backgroundColor: whiteColor,
+    paddingTop: Dimensions.get('window').height / 15,
   },
-  navigation: {
-    flex: 3,
-    justifyContent: 'center',
-    paddingLeft: 30 
+  textLink: {
+    marginLeft: '50%',
+    marginVertical: 10,
+    color: 'gray'
   },
   body: {
-    flex: 6,
-    justifyContent: 'center',
-    alignItems: 'center' 
+    alignItems: 'center',
+    marginBottom: 100
   },
-  footer: {
-    flex: 3
-  }
+  img: {
+    alignSelf: 'center',
+    height: 100,
+    borderRadius: 50,
+    width: 100,
+    margin: 15
+  },
 })
 
 const mapStateToProps = (state: ApplicationState) => ({

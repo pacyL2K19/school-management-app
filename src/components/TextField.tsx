@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
         marginRight: 30,
         paddingLeft: 20,
         paddingRight: 10,
-
     },
     textField: {
         flex: 1,

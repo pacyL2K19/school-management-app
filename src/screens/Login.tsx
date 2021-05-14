@@ -5,7 +5,8 @@ import {
   Text,
   ScrollView,
   Dimensions,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
 import { TextField } from '../components'
 import { ButtonWithTitle } from '../components/ButtonWithTittle/ButtonWithTitle'
@@ -56,10 +57,11 @@ const _LoginScreen: React.FC<LoginProps> = ({
         source={topImg}
         style={styles.img}
       />
-      <View style={styles.navigation}>
+      <View>
         <Text style={{
-          fontSize: 30,
-          marginBottom: 50,
+          fontSize: 25,
+          textAlign: 'center',
+          marginBottom: 30,
           fontWeight: '400'
         }}>
           {title}
@@ -91,6 +93,15 @@ const _LoginScreen: React.FC<LoginProps> = ({
           onTextChange={setPassword}
           isSecure={true}
         />
+        {
+          !isSignup && (
+            <TouchableOpacity>
+              <Text style={styles.textLink}>
+                Mot de passe oublie ?
+              </Text>
+            </TouchableOpacity>
+          )
+        }
         {isSignup && (
           <>
             <TextField
@@ -109,7 +120,7 @@ const _LoginScreen: React.FC<LoginProps> = ({
         <ButtonWithTitle
           title={title}
           height={50}
-          width={Dimensions.get('window').width / 2}
+          width={Dimensions.get('window').width - 60}
           onTap={onTapAuthenticate}
         />
 
@@ -120,12 +131,11 @@ const _LoginScreen: React.FC<LoginProps> = ({
               : 'Vous avez deja un compte ? Connectez-vous'
           }
           height={50}
-          width={350}
+          width={Dimensions.get('window').width}
           onTap={onTapOptions}
           isNoBg={true}
         />
       </View>
-      <View style={styles.footer}></View>
     </ScrollView>
   )
 }
@@ -133,20 +143,15 @@ const _LoginScreen: React.FC<LoginProps> = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: whiteColor,
-    paddingTop: Dimensions.get('window').height / 15
+    paddingTop: Dimensions.get('window').height / 15,
   },
-  navigation: {
-    flex: 3,
-    justifyContent: 'center',
-    paddingLeft: 30
+  textLink: {
+    marginLeft: '50%',
+    marginVertical: 10,
+    color: 'gray'
   },
   body: {
-    flex: 6,
-    justifyContent: 'center',
     alignItems: 'center'
-  },
-  footer: {
-    flex: 3
   },
   img: {
     alignSelf: 'center',

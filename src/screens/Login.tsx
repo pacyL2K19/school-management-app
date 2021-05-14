@@ -4,7 +4,8 @@ import {
   View,
   Text,
   ScrollView,
-  Dimensions
+  Dimensions,
+  Image
 } from 'react-native'
 import { TextField } from '../components'
 import { ButtonWithTitle } from '../components/ButtonWithTittle/ButtonWithTitle'
@@ -15,6 +16,9 @@ import {
   OnUserSignup,
   UserState
 } from '../redux'
+
+import topImg from '../assets/logo.jpg'
+import { whiteColor } from '../core'
 
 interface LoginProps {
   OnUserLogin: Function
@@ -48,6 +52,10 @@ const _LoginScreen: React.FC<LoginProps> = ({
 
   return (
     <ScrollView style={styles.container}>
+      <Image
+        source={topImg}
+        style={styles.img}
+      />
       <View style={styles.navigation}>
         <Text style={{
           fontSize: 30,
@@ -124,21 +132,29 @@ const _LoginScreen: React.FC<LoginProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Dimensions.get('window').height / 8
+    backgroundColor: whiteColor,
+    paddingTop: Dimensions.get('window').height / 15
   },
   navigation: {
     flex: 3,
     justifyContent: 'center',
-    paddingLeft: 30 
+    paddingLeft: 30
   },
   body: {
     flex: 6,
     justifyContent: 'center',
-    alignItems: 'center' 
+    alignItems: 'center'
   },
   footer: {
     flex: 3
-  }
+  },
+  img: {
+    alignSelf: 'center',
+    height: 100,
+    borderRadius: 50,
+    width: 100,
+    margin: 15
+  },
 })
 
 const mapStateToProps = (state: ApplicationState) => ({

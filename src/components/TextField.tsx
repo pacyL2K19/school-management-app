@@ -1,17 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable react-native/no-color-literals */
 import React, { useState, useEffect } from "react";
 import {
     View,
     TextInput,
     StyleSheet,
 } from "react-native";
+import { bgTextInputColor, blackTextColor } from "../core/theme/colors";
 
 interface TextFieldProps {
   placeholder: string;
   isSecure?: boolean;
-  onTextChange: Function;
+  onTextChange: (text: string) => void;
 }
 
 export const TextField: React.FC<TextFieldProps> = ({
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         height: 50,
         borderRadius: 10,
-        backgroundColor: "#e2f1ff",
+        backgroundColor: bgTextInputColor,
         justifyContent: "center",
         alignItems: "center",
         margin: 10,
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
     textField: {
         flex: 1,
         height: 50,
-        fontSize: 20,
-        color: "#000",
+        fontSize: 14,
+        color: blackTextColor,
     },
 });

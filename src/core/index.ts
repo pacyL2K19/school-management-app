@@ -1,5 +1,11 @@
-import { whiteColor } from "./theme/colors";
+import {
+    whiteColor,
+    bgTextInputColor,
+    blackTextColor
+} from "./theme/colors";
 
 export {
-    whiteColor
+    whiteColor,
+    bgTextInputColor,
+    blackTextColor
 };

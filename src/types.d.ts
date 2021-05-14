@@ -9,6 +9,16 @@ enum Periods {
     SECOND_SESSION = "Deuxieme Session"
 }
 
+enum Degrees {
+    A0 = "A0",
+    A1 = "A1",
+    A2 = "A2",
+    D6 = "D6",
+    L2 = "L2",
+    G3 = "G3",
+    MD = "MD"
+}
+
 enum TypeOfCotation {
     QUIZ = "Interrogation",
     HOME_WORK = "Devoir A Domicile",
@@ -34,27 +44,29 @@ interface Address {
 
 interface Course {
     label: string;
-    ponderation: number;
-    hoursPerWeek: number;
-    hasExamSession: boolean;
-    hasSecondSession: boolean;
+    ponderation?: number;
+    hoursPerWeek?: number;
+    hasExamSession?: boolean;
+    hasSecondSession?: boolean;
 };
 
 interface Qualification {
-    degree: "A0" | "A1" | "A2" | "D6" | "L2" | "G3" | "MD";
-    longetivity: number
+    degree?: Degrees;
+    longetivity?: number
 };
 
 type Teacher = {
-    identity: Identity,
-    address: Address,
+    identity?: Identity,
+    address?: Address,
     courses: [Course],
-    qualification: Qualification
+    qualification?: Qualification
 };
 
 type HomeOption = {
     label: string,
-    routeName: string
+    backgroundImage: string,
+    icon: string,
+    routeName?: string
 }
 
 interface Class {
@@ -67,24 +79,23 @@ interface Class {
 
 interface Absence {
     date: Date;
-    reason: string;
-    justified: boolean
+    reason?: string;
+    justified?: boolean
 }
 
 type Cotation = {
     student: Student,
     course: Course,
-    period: Period,
-    type: TypeOfCotation,
-    period: Periods
+    period: Periods,
+    type?: TypeOfCotation
     
 }
 
 type Students = {
-    identity: Identity,
-    guardians: [Guardian], // Tutaire in french
-    class: Class,
-    address: Address,
-    absences: [Absence],
-    Cotes: [Cotation]
+    identity?: Identity,
+    guardians?: [Guardian], // Tutaire in french
+    class?: Class,
+    address?: Address,
+    absences?: [Absence],
+    Cotes?: [Cotation]
 }

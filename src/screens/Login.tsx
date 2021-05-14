@@ -48,7 +48,7 @@ const _LoginScreen: React.FC<LoginProps> = ({
 
   const onTapOptions = () => {
     setIsSignup(!isSignup)
-    setTitle(!isSignup ? 'Se connecter' : 'Connexion')
+    setTitle(!isSignup ? `S'inscrire` : 'Connexion')
   }
 
   return (
@@ -151,7 +151,8 @@ const styles = StyleSheet.create({
     color: 'gray'
   },
   body: {
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 100
   },
   img: {
     alignSelf: 'center',

@@ -17,15 +17,15 @@ import img from "../assets/icon.jpeg";
 import avatar from "../assets/teacher.png";
 import { bgTextInputColor, whiteColor } from "../core";
 
-// interface Props {
-//     options: [HomeOption]
-// }
+interface Props {
+    options: [HomeOption]
+}
 
-const Home:React.FC = () => {
+const Home:React.FC<Props> = (props: Props) => {
 
-    // const handleNavigate = (screen: string): void => {
-    //     console.log(screen);
-    // };
+    const handleNavigate = (screen: string): void => {
+        console.log(screen);
+    };
 
     return (
         <ScrollView>
@@ -46,7 +46,7 @@ const Home:React.FC = () => {
                 </View>
             </View>
             <HeaderHome school={{label: "ITIG Don Bosco", slogan: "Duc In Altum"}} />
-            {/* {
+            {
                 props.options.map(option => (
                     <CardOptions
                         icon={img}
@@ -56,7 +56,10 @@ const Home:React.FC = () => {
                         key={option.routeName} 
                     />
                 ))
-            } */}
+            }
+            <View>
+
+            </View>
         </ScrollView>
     );
 };

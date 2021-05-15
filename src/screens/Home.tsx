@@ -7,11 +7,11 @@ import { CardOptions, HeaderHome } from "../components/";
 import { HomeOption } from "../types";
 import img from "../assets/icon.jpeg";
 
-interface Props {
-    options: [HomeOption]
-}
+// interface Props {
+//     options: [HomeOption]
+// }
 
-const Home:React.FC<Props> = (props: Props) => {
+const Home:React.FC = () => {
 
     // const handleNavigate = (screen: string): void => {
     //     console.log(screen);
@@ -19,19 +19,18 @@ const Home:React.FC<Props> = (props: Props) => {
 
     return (
         <ScrollView>
-            <HeaderHome schoolName="ITIG Don Bosco" />
-            {
+            <HeaderHome school={{label: "Itig", slogan: "Duc In Altum"}} />
+            {/* {
                 props.options.map(option => (
                     <CardOptions
                         icon={img}
                         routeName = "Home"
                         onPress = {() => console.log("Event ")}
                         label={option.label}
-                        // onPress={handleNavigate(option.routeName)}
                         key={option.routeName} 
                     />
                 ))
-            }
+            } */}
         </ScrollView>
     );
 };

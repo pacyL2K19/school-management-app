@@ -102,3 +102,8 @@ type Students = {
     absences?: [Absence],
     Cotes?: [Cotation]
 }
+
+type School = {
+    label: string,
+    slogan: string
+}

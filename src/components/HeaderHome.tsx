@@ -8,9 +8,11 @@ import {
 } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
+import { primaryButtonColor } from "../core/theme/colors"
+import { School } from "../types";
 
 interface Props {
-    schoolName: String
+    school: School
 }
 
 const WIDTH_DEVICE = Dimensions.get("window").width;
@@ -18,28 +20,38 @@ const HEIGHT_DEVICE = Dimensions.get("window").height;
 
 const HeaderHome: React.FC<Props> = (props: Props) => {
     return (
-        <LinearGradient
-            colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.4)", "rgba(0, 0, 0, 1)"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
+        <View
             style={styles.header}
         >
             <Text style={styles.welcome}>
                 Bienvenue
             </Text>
-            <Text>
-                {props.schoolName}
+            <Text style={styles.schoolName}>
+                {props.school.label}
             </Text>
-        </LinearGradient>
+            <Text style={styles.schoolSlogan}>
+                {props.school.slogan}
+            </Text>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     welcome: {
-
+        fontSize: 20
     },
     header: {
-        paddingTop: HEIGHT_DEVICE / 4
+        paddingTop: HEIGHT_DEVICE / 5,
+        paddingHorizontal: 20,
+        paddingBottom: 50,
+        backgroundColor: primaryButtonColor,
+        borderBottomRightRadius: WIDTH_DEVICE / 3
+    },
+    schoolSlogan: {
+
+    },
+    schoolName: {
+
     }
 })
 

@@ -20,6 +20,7 @@
     "axios": "^0.21.1",
     "eslint-config-react-native-typescript": "^2.2.6",
     "expo": "^41.0.0",
+    "expo-linear-gradient": "^9.1.0",
     "expo-location": "~12.0.4",
     "expo-status-bar": "~1.0.4",
     "jest": "^26.6.3",

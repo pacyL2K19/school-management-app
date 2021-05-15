@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from "react-native";
+
 /* eslint-disable no-shadow */
 enum Periods {
     FIRST_PERIOD = "Premiere Periode",
@@ -64,9 +66,10 @@ type Teacher = {
 
 type HomeOption = {
     label: string,
-    backgroundImage: string,
-    icon: string,
+    // backgroundImage: string,
+    icon: ImageSourcePropType,
     routeName?: string
+    onPress?: () => void
 }
 
 interface Class {

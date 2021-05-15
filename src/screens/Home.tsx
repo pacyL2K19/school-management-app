@@ -3,7 +3,8 @@ import {
     ScrollView
 } from "react-native";
 
-import { CardOptions } from "../components/";
+import { CardOptions, HeaderHome } from "../components/";
+import { HomeOption } from "../types";
 
 interface Props {
     options: [HomeOption]
@@ -17,6 +18,7 @@ const Home:React.FC<Props> = (props: Props) => {
 
     return (
         <ScrollView>
+            <HeaderHome schoolName="ITIG Don Bosco" />
             {
                 props.options.map(option => (
                     <CardOptions label={option.label} onPress={handleNavigate(option.routeName)} key={option.routeName} />

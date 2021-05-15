@@ -11,8 +11,7 @@ import { Avatar } from 'react-native-paper';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
-import { CardOptions, HeaderHome } from "../components/";
-import { HomeOption } from "../types";
+import { CardOptions, HeaderHome, SearchBar } from "../components/";
 import img from "../assets/icon.jpeg";
 import avatar from "../assets/teacher.png";
 import { bgTextInputColor, whiteColor } from "../core";
@@ -21,7 +20,7 @@ interface Props {
     options: [HomeOption]
 }
 
-const Home:React.FC<Props> = (props: Props) => {
+const Home: React.FC<Props> = (props: Props) => {
 
     const handleNavigate = (screen: string): void => {
         console.log(screen);
@@ -29,34 +28,39 @@ const Home:React.FC<Props> = (props: Props) => {
 
     return (
         <ScrollView>
-            <View style={styles.header}>
-                <View style={styles.headerSubContainer}>
-                    <TouchableOpacity style={styles.humburger}>
-                        <Icon name="menu" size={30} color="#000" />
-                    </TouchableOpacity>
-                    <View style={styles.rightHeader}>
-                        <TouchableOpacity style={{marginRight: 20}}>
-                            <Text style={styles.badge}>10</Text>
-                            <MaterialIcon name="notifications-none" color={bgTextInputColor} size={30} />
+            <View>
+                <View style={styles.header}>
+                    <View style={styles.headerSubContainer}>
+                        <TouchableOpacity style={styles.humburger}>
+                            <Icon name="menu" size={30} color="#000" />
                         </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Avatar.Image size={40} source={avatar} />
-                        </TouchableOpacity>
+                        <View style={styles.rightHeader}>
+                            <TouchableOpacity style={{ marginRight: 20 }}>
+                                <Text style={styles.badge}>10</Text>
+                                <MaterialIcon name="notifications-none" color={bgTextInputColor} size={30} />
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Avatar.Image size={40} source={avatar} />
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
+                <HeaderHome school={{ label: "ITIG Don Bosco", slogan: "Duc In Altum" }} />
+                <View style={styles.searchBox}>
+                    <SearchBar />
+                </View>
             </View>
-            <HeaderHome school={{label: "ITIG Don Bosco", slogan: "Duc In Altum"}} />
-            {
+
+            {/* {
                 props.options.map(option => (
                     <CardOptions
                         icon={img}
                         routeName = "Home"
-                        onPress = {() => console.log("Event ")}
                         label={option.label}
                         key={option.routeName} 
                     />
                 ))
-            }
+            } */}
             <View>
 
             </View>
@@ -71,7 +75,6 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         height: 100,
-        // backgroundColor: "#fff",
         zIndex: 10
     },
     headerSubContainer: {
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
     },
     badge: {
         position: "absolute",
-        right: 0, 
+        right: 0,
         top: 0,
         fontSize: 10,
         backgroundColor: "red",
@@ -100,6 +103,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         color: whiteColor,
         zIndex: 1
+    },
+    searchBox: {
+        position: "absolute",
+        bottom: -20
     }
 })
 

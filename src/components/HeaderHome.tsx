@@ -9,7 +9,6 @@ import {
 
 import { LinearGradient } from "expo-linear-gradient";
 import { bgHomeColor } from "../core/theme/colors"
-import { School } from "../types";
 
 interface Props {
     school: School

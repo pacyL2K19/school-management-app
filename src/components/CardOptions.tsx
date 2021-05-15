@@ -3,20 +3,23 @@ import React from "react";
 import {
     TouchableOpacity,
     StyleSheet,
-    Image,
+    View,
     Text
 } from "react-native";
 import { whiteColor } from "../core";
-import { HomeOption } from "../types";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const CardOptions:React.FC<HomeOption> = (props: HomeOption) => {
+const CardOptions: React.FC<HomeOption> = (props: HomeOption) => {
     return (
-        <TouchableOpacity onPress = {props.onPress}>
-            <Image
-                source={props.icon}
-            />
-            <Text style = {styles.text}>
+        <TouchableOpacity onPress={() => console.log(props.routeName)}>
+            <View style={styles.iconContainer}>
+                <Icon name={props.icon} />
+            </View>
+            <Text style={styles.text}>
                 {props.label}
+            </Text>
+            <Text style={styles.details}>
+                100 Eleves aujourd'hui
             </Text>
         </TouchableOpacity>
     );
@@ -25,6 +28,12 @@ const CardOptions:React.FC<HomeOption> = (props: HomeOption) => {
 const styles = StyleSheet.create({
     text: {
         color: whiteColor
+    },
+    iconContainer: {
+        backgroundColor: whiteColor
+    },
+    details: {
+        
     }
 });
 

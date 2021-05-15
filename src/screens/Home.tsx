@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     rightHeader: {
-        flexDirection: "row"
+        flexDirection: "row",
+        alignItems: "center"
     },
     humburger: {
         padding: 5,

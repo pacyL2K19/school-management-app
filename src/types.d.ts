@@ -1,4 +1,4 @@
-import { ImageSourcePropType } from "react-native";
+import { GestureResponderEvent, ImageSourcePropType } from "react-native";
 
 /* eslint-disable no-shadow */
 enum Periods {
@@ -68,8 +68,8 @@ type HomeOption = {
     label: string,
     // backgroundImage: string,
     icon: ImageSourcePropType,
-    routeName?: string
-    onPress?: () => void
+    routeName: string
+    onPress?: (event: GestureResponderEvent) => void
 }
 
 interface Class {

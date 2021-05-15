@@ -2,7 +2,6 @@
 import React from "react";
 import {
     TouchableOpacity,
-    // View,
     StyleSheet,
     Image,
     Text

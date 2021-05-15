@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
-import { primaryButtonColor } from "../core/theme/colors"
+import { bgHomeColor } from "../core/theme/colors"
 import { School } from "../types";
 
 interface Props {
@@ -38,20 +38,20 @@ const HeaderHome: React.FC<Props> = (props: Props) => {
 
 const styles = StyleSheet.create({
     welcome: {
-        fontSize: 20
+        fontSize: 25
     },
     header: {
-        paddingTop: HEIGHT_DEVICE / 5,
+        paddingTop: HEIGHT_DEVICE / 5.5,
         paddingHorizontal: 20,
-        paddingBottom: 50,
-        backgroundColor: primaryButtonColor,
+        paddingBottom: 20,
+        backgroundColor: bgHomeColor,
         borderBottomRightRadius: WIDTH_DEVICE / 3
     },
     schoolSlogan: {
-
+        fontStyle: "italic"
     },
     schoolName: {
-
+        fontSize: 32
     }
 })
 

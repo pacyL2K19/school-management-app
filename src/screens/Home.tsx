@@ -1,7 +1,12 @@
 import React from "react";
 import {
-    ScrollView
+    ScrollView,
+    View,
+    StyleSheet,
+    TouchableOpacity
 } from "react-native";
+
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { CardOptions, HeaderHome } from "../components/";
 import { HomeOption } from "../types";
@@ -19,7 +24,14 @@ const Home:React.FC = () => {
 
     return (
         <ScrollView>
-            <HeaderHome school={{label: "Itig", slogan: "Duc In Altum"}} />
+            <View style={styles.header}>
+                <View style={styles.headerSubContainer}>
+                    {/* <TouchableOpacity> */}
+                        <Icon name="menu" size={30} />
+                    {/* </TouchableOpacity> */}
+                </View>
+            </View>
+            <HeaderHome school={{label: "ITIG Don Bosco", slogan: "Duc In Altum"}} />
             {/* {
                 props.options.map(option => (
                     <CardOptions
@@ -34,5 +46,21 @@ const Home:React.FC = () => {
         </ScrollView>
     );
 };
+
+const styles = StyleSheet.create({
+    header: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 100,
+        // backgroundColor: "#fff",
+        zIndex: 10
+    },
+    headerSubContainer: {
+        flex: 1,
+        flexDirection: "row"
+    }
+})
 
 export default Home;

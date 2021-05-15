@@ -40,9 +40,9 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     header: {
-        paddingTop: HEIGHT_DEVICE / 5.5,
+        paddingTop: HEIGHT_DEVICE / 6,
         paddingHorizontal: 20,
-        paddingBottom: 20,
+        paddingBottom: 35,
         backgroundColor: bgHomeColor,
         borderBottomRightRadius: WIDTH_DEVICE / 3
     },

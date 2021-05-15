@@ -4,7 +4,8 @@ import {
     View,
     StyleSheet,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    FlatList
 } from "react-native";
 import { Avatar } from 'react-native-paper';
 
@@ -15,6 +16,7 @@ import { CardOptions, HeaderHome, SearchBar } from "../components/";
 import img from "../assets/icon.jpeg";
 import avatar from "../assets/teacher.png";
 import { bgTextInputColor, whiteColor } from "../core";
+import data from "../utils/options.json";
 
 interface Props {
     options: [HomeOption]
@@ -27,8 +29,8 @@ const Home: React.FC<Props> = (props: Props) => {
     };
 
     return (
-        <ScrollView>
-            <View>
+        <ScrollView style={styles.container}>
+            <View style={{marginBottom: 50}}>
                 <View style={styles.header}>
                     <View style={styles.headerSubContainer}>
                         <TouchableOpacity style={styles.humburger}>
@@ -50,6 +52,18 @@ const Home: React.FC<Props> = (props: Props) => {
                     <SearchBar />
                 </View>
             </View>
+            <FlatList 
+                data={data.options}
+                numColumns={2}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({item}) => (
+                    <CardOptions
+                        icon={item.iconName}
+                        routeName={item.routeName}
+                        label={item.label}
+                    />
+                )}
+            />
 
             {/* {
                 props.options.map(option => (
@@ -69,6 +83,9 @@ const Home: React.FC<Props> = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: whiteColor
+    },
     header: {
         position: "absolute",
         top: 0,
@@ -106,7 +123,8 @@ const styles = StyleSheet.create({
     },
     searchBox: {
         position: "absolute",
-        bottom: -20
+        bottom: -25,
+        zIndex: 100
     }
 })
 

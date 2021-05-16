@@ -93,6 +93,7 @@ const Home: React.FC<Props> = (props: Props) => {
                     </TouchableOpacity>
                     <View style={styles.separator}></View>
                     <QuickActionHome />
+                    <QuickActionHome />
                 </View>
             </Modal>
         </View>

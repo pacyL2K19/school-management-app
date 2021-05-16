@@ -1,6 +1,3 @@
-/* eslint-disable react/display-name */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";

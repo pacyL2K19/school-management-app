@@ -14,7 +14,6 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
 import { CardOptions, HeaderHome, SearchBar } from "../components/";
-import img from "../assets/icon.jpeg";
 import avatar from "../assets/teacher.png";
 import { bgTextInputColor, whiteColor } from "../core";
 import data from "../utils/options.json";

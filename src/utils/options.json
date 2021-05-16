@@ -1,6 +1,5 @@
 {
-    "options": [
-        {
+    "options": [{
             "id": 1,
             "label": "Retards",
             "iconName": "timer-off-outline",
@@ -22,13 +21,13 @@
             "id": 4,
             "label": "Mes Cours",
             "iconName": "book",
-            "routeName": "points"
+            "routeName": "courses"
         },
         {
             "id": 5,
             "label": "Ma Classe",
             "iconName": "school-outline",
-            "routeName": "points"
+            "routeName": "class"
         },
         {
             "id": 6,

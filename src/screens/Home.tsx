@@ -5,7 +5,8 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
-    FlatList
+    FlatList,
+    Dimensions
 } from "react-native";
 import { Avatar } from 'react-native-paper';
 
@@ -22,6 +23,8 @@ interface Props {
     options: [HomeOption]
 }
 
+const WIDTH_DEVICE = Dimensions.get("window").width
+
 const Home: React.FC<Props> = (props: Props) => {
 
     const handleNavigate = (screen: string): void => {
@@ -29,56 +32,48 @@ const Home: React.FC<Props> = (props: Props) => {
     };
 
     return (
-        <ScrollView style={styles.container}>
-            <View style={{marginBottom: 50}}>
-                <View style={styles.header}>
-                    <View style={styles.headerSubContainer}>
-                        <TouchableOpacity style={styles.humburger}>
-                            <Icon name="menu" size={30} color="#000" />
-                        </TouchableOpacity>
-                        <View style={styles.rightHeader}>
-                            <TouchableOpacity style={{ marginRight: 20 }}>
-                                <Text style={styles.badge}>10</Text>
-                                <MaterialIcon name="notifications-none" color={bgTextInputColor} size={30} />
+        <View>
+            <ScrollView style={styles.container}>
+                <View style={{ marginBottom: 50 }}>
+                    <View style={styles.header}>
+                        <View style={styles.headerSubContainer}>
+                            <TouchableOpacity style={styles.humburger}>
+                                <Icon name="menu" size={30} color="#000" />
                             </TouchableOpacity>
-                            <TouchableOpacity>
-                                <Avatar.Image size={40} source={avatar} />
-                            </TouchableOpacity>
+                            <View style={styles.rightHeader}>
+                                <TouchableOpacity style={{ marginRight: 20 }}>
+                                    <Text style={styles.badge}>10</Text>
+                                    <MaterialIcon name="notifications-none" color={bgTextInputColor} size={30} />
+                                </TouchableOpacity>
+                                <TouchableOpacity>
+                                    <Avatar.Image size={40} source={avatar} />
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
+                    <HeaderHome school={{ label: "ITIG Don Bosco", slogan: "Duc In Altum" }} />
+                    <View style={styles.searchBox}>
+                        <SearchBar />
+                    </View>
                 </View>
-                <HeaderHome school={{ label: "ITIG Don Bosco", slogan: "Duc In Altum" }} />
-                <View style={styles.searchBox}>
-                    <SearchBar />
-                </View>
-            </View>
-            <FlatList 
-                data={data.options}
-                numColumns={2}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({item}) => (
-                    <CardOptions
-                        icon={item.iconName}
-                        routeName={item.routeName}
-                        label={item.label}
-                    />
-                )}
-            />
-
-            {/* {
-                props.options.map(option => (
-                    <CardOptions
-                        icon={img}
-                        routeName = "Home"
-                        label={option.label}
-                        key={option.routeName} 
-                    />
-                ))
-            } */}
-            <View>
-
-            </View>
-        </ScrollView>
+                <FlatList
+                    data={data.options}
+                    numColumns={2}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => (
+                        <CardOptions
+                            icon={item.iconName}
+                            routeName={item.routeName}
+                            label={item.label}
+                        />
+                    )}
+                />
+            </ScrollView>
+            <TouchableOpacity style={styles.btnBottom}>
+                <MaterialIcon name="keyboard-arrow-up" size={30} />
+                <Text style={styles.cta}>Action Rapide</Text>
+            </TouchableOpacity>
+        </View>
     );
 };
 
@@ -125,6 +120,24 @@ const styles = StyleSheet.create({
         position: "absolute",
         bottom: -25,
         zIndex: 100
+    },
+    btnBottom: {
+        width: WIDTH_DEVICE - 150,
+        left: 75,
+        height: 40,
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
+        elevation: 10,
+        position: "absolute",
+        bottom: 0,
+        backgroundColor: bgTextInputColor,
+        opacity: 0.9,
+        justifyContent: "center",
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    cta: {
+        fontWeight: "bold"
     }
 })
 

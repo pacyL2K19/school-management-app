@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: primaryButtonColor,
         borderRadius: 5,
-        width: (Dimensions.get("window").width / 2 )- 40,
+        width: (Dimensions.get("window").width / 2) - 40,
         marginHorizontal: 20,
         padding: 15,
         height: 150,

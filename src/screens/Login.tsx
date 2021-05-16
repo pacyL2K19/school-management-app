@@ -20,17 +20,20 @@ import {
 
 import topImg from '../assets/logo.jpg'
 import { whiteColor } from '../core'
+import { NavigationScreenProp } from 'react-navigation'
 
 interface LoginProps {
   OnUserLogin: Function
   OnUserSignup: Function
-  userReducer: UserState
+  userReducer: UserState,
+  navigation: NavigationScreenProp<any,any>
 }
 
 const _LoginScreen: React.FC<LoginProps> = ({
   OnUserLogin,
   OnUserSignup,
-  userReducer
+  userReducer,
+  navigation
 }) => {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -39,11 +42,12 @@ const _LoginScreen: React.FC<LoginProps> = ({
   const [isSignup, setIsSignup] = useState(false)
 
   const onTapAuthenticate = () => {
-    if (isSignup) {
-      OnUserSignup(email, phone, password)
-    } else {
-      OnUserLogin(email, password)
-    }
+    navigation.navigate("Home")
+    // if (isSignup) {
+    //   OnUserSignup(email, phone, password)
+    // } else {
+    //   OnUserLogin(email, password)
+    // }
   }
 
   const onTapOptions = () => {

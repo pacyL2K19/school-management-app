@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.plic_19.schoolmanagementapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

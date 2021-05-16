@@ -17,7 +17,6 @@ const Tabs = () => {
             inactiveColor={blackTextColor}
             barStyle={{
                 backgroundColor: "#ffffff",
-                elevation: 10,
                 shadowOffset: { width: 0, height: 3 },
                 shadowColor: "#000",
                 shadowOpacity: 0.5
@@ -26,17 +25,17 @@ const Tabs = () => {
                 tabBarIcon: ({ focused, color }) => {
                     let iconName;
 
-                    if (route.name === "Home") {
+                    if (route.name === "Accueil") {
                         iconName = focused
                             ? "ios-home-sharp"
                             : "ios-home-outline";
-                    } else if (route.name === "Courses") {
+                    } else if (route.name === "Cours") {
                         iconName = focused ? "book" : "book-outline";
                     } else if (route.name === "Historic") {
                         iconName = focused ? "time" : "time-outline";
                     } else if (route.name === "Cart") {
                         iconName = focused ? "ios-cart" : "ios-cart-outline";
-                    } else if (route === "Settings") {
+                    } else if (route === "Parametres") {
                         iconName = focused
                             ? "settings"
                             : "settings-outline";
@@ -47,9 +46,9 @@ const Tabs = () => {
                 }
             })}
         >
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Courses" component={Blank} />
-            <Tab.Screen name="Settings" component={Blank} />
+            <Tab.Screen name="Accueil" component={Home} />
+            <Tab.Screen name="Cours" component={Blank} />
+            <Tab.Screen name="Parametres" component={Blank} />
         </Tab.Navigator>
     );
 };

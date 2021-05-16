@@ -66,6 +66,7 @@ type HomeOption = {
     label: string,
     icon: string,
     routeName: string
+    onPress: () => void
 }
 
 interface Class {

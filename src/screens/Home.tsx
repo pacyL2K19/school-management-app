@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     ScrollView,
     View,
@@ -6,28 +6,33 @@ import {
     Text,
     TouchableOpacity,
     FlatList,
-    Dimensions
+    Dimensions,
+    Modal
 } from "react-native";
 import { Avatar } from 'react-native-paper';
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
-import { CardOptions, HeaderHome, SearchBar } from "../components/";
+import { CardOptions, HeaderHome, SearchBar, QuickActionHome } from "../components/";
 import avatar from "../assets/teacher.png";
-import { bgTextInputColor, whiteColor } from "../core";
+import attendances from "../assets/attendance.png";
+import { bgTextInputColor, blackTextColor, whiteColor } from "../core";
 import data from "../utils/options.json";
+import { NavigationScreenProp } from "react-navigation";
 
 interface Props {
-    options: [HomeOption]
+    options: [HomeOption],
+    navigation: NavigationScreenProp<any, any>
 }
 
 const WIDTH_DEVICE = Dimensions.get("window").width
 
 const Home: React.FC<Props> = (props: Props) => {
 
+    const [showModal, setShowModal] = useState(false);
     const handleNavigate = (screen: string): void => {
-        console.log(screen);
+        props.navigation.navigate(screen);
     };
 
     return (
@@ -64,14 +69,32 @@ const Home: React.FC<Props> = (props: Props) => {
                             icon={item.iconName}
                             routeName={item.routeName}
                             label={item.label}
+                            onPress={() => handleNavigate(item.routeName)}
                         />
                     )}
                 />
             </ScrollView>
-            <TouchableOpacity style={styles.btnBottom}>
+            <TouchableOpacity style={styles.btnBottom} onPress={() => setShowModal(true)}>
                 <MaterialIcon name="keyboard-arrow-up" size={30} />
                 <Text style={styles.cta}>Action Rapide</Text>
             </TouchableOpacity>
+            <Modal
+                animationType='slide'
+                transparent={true}
+                visible={showModal}
+                onRequestClose={() => {
+                    setShowModal(false);
+                }}
+            >
+                <View style={styles.modalView}>
+                    <TouchableOpacity style={styles.btnOnTopModal} onPress={() => setShowModal(false)}>
+                        <MaterialIcon name="keyboard-arrow-down" size={30} />
+                        <Text style={styles.cta}>Fermer</Text>
+                    </TouchableOpacity>
+                    <View style={styles.separator}></View>
+                    <QuickActionHome />
+                </View>
+            </Modal>
         </View>
     );
 };
@@ -137,6 +160,27 @@ const styles = StyleSheet.create({
     },
     cta: {
         fontWeight: "bold"
+    },
+    modalView: {
+        position: "absolute",
+        bottom: 55,
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
+        height: 300,
+        width: WIDTH_DEVICE,
+        backgroundColor: bgTextInputColor,
+        elevation: 2
+    },
+    btnOnTopModal: {
+        justifyContent: "center",
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    separator: {
+        alignSelf: "center",
+        height: .5,
+        backgroundColor: blackTextColor,
+        width: "30%"
     }
 })
 

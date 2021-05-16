@@ -2,12 +2,14 @@ import {
     whiteColor,
     bgTextInputColor,
     blackTextColor,
-    primaryButtonColor
+    primaryButtonColor,
+    secondaryTextColor
 } from "./theme/colors";
 
 export {
     whiteColor,
     bgTextInputColor,
     blackTextColor,
-    primaryButtonColor
+    primaryButtonColor,
+    secondaryTextColor
 };

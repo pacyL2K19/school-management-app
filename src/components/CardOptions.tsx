@@ -11,7 +11,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const CardOptions: React.FC<HomeOption> = (props: HomeOption) => {
     return (
-        <TouchableOpacity style={styles.container} onPress={() => console.log(props.routeName)}>
+        <TouchableOpacity style={styles.container} onPress={() => props.onPress()}>
             <View style={styles.iconContainer}>
                 <Icon name={props.icon} size={30} />
             </View>

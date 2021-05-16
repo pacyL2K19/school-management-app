@@ -4,7 +4,7 @@ import Tabs from "./BottomNav";
 import DrawerContent from "./components/DrawerContent";
 
 const Drawer = createDrawerNavigator();
-function Home() {
+function DrawerNavigation() {
     return (
         <Drawer.Navigator
             initialRouteName="Home"
@@ -15,4 +15,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default DrawerNavigation;

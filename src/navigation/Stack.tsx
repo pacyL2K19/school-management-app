@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home, LoginScreen } from "../screens";
+import { LoginScreen } from "../screens";
+import DrawerNavigation from "./Drawer";
 
 const Stack = createStackNavigator();
 
@@ -11,7 +12,7 @@ const StackScreens = () => {
         >
             <Stack.Screen
                 name="Home"
-                component={Home}
+                component={DrawerNavigation}
                 options={{
                     headerShown: false
                 }}

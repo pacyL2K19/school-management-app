@@ -20,7 +20,7 @@
         {
             "id": 4,
             "label": "Mes Cours",
-            "iconName": "book",
+            "iconName": "book-outline",
             "routeName": "courses"
         },
         {

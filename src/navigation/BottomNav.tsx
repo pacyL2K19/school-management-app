@@ -31,14 +31,14 @@ const Tabs = () => {
                             ? "ios-home-sharp"
                             : "ios-home-outline";
                     } else if (route.name === "Courses") {
-                        iconName = focused ? "heart-sharp" : "heart-outline";
+                        iconName = focused ? "book" : "book-outline";
                     } else if (route.name === "Historic") {
                         iconName = focused ? "time" : "time-outline";
                     } else if (route.name === "Cart") {
                         iconName = focused ? "ios-cart" : "ios-cart-outline";
                     } else if (route === "Settings") {
                         iconName = focused
-                            ? "ios-settings"
+                            ? "settings"
                             : "settings-outline";
                     } else {
                         iconName = ""

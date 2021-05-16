@@ -1,17 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Text, Image, Alert } from "react-native";
+import { View, StyleSheet, Text, Alert } from "react-native";
 
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Drawer } from "react-native-paper";
-import AsyncStorage from "@react-native-community/async-storage";
-import Toast from "react-native-tiny-toast";
-
-import { color } from "react-native-reanimated";
-
 import { Avatar } from "react-native-paper";
 
 import avatar from "../../assets/teacher.png";
@@ -42,7 +37,7 @@ const DrawerContent = (props: Props) => {
                                     textAlign: "center"
                                 }}
                             >
-                                Mago Eat App
+                                ITIG Don Bosco
                             </Text>
                             <Avatar.Image
                                 style={{ marginTop: 20 }}
@@ -74,26 +69,26 @@ const DrawerContent = (props: Props) => {
                                 )}
                             />
                             <Drawer.Item
-                                label="Panier"
+                                label="Mes cours"
                                 onPress={() => {
                                     props.navigation.navigate("Blank");
                                 }}
                                 icon={({ color, size }) => (
                                     <Icon
-                                        name="cart-outline"
+                                        name="book-outline"
                                         color={color}
                                         size={size}
                                     />
                                 )}
                             />
                             <Drawer.Item
-                                label="Favoris"
+                                label="Ma Classe"
                                 onPress={() => {
                                     props.navigation.navigate("Favorites");
                                 }}
                                 icon={({ color, size }) => (
                                     <Icon
-                                        name="heart-outline"
+                                        name="school-outline"
                                         color={color}
                                         size={size}
                                     />
@@ -119,7 +114,6 @@ const DrawerContent = (props: Props) => {
                                 },
                                 {
                                     text: "Refuser",
-                                    // type: "cancel"
                                 }
                             ]
                         );

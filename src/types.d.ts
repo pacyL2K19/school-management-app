@@ -1,5 +1,3 @@
-import { GestureResponderEvent, ImageSourcePropType } from "react-native";
-
 /* eslint-disable no-shadow */
 enum Periods {
     FIRST_PERIOD = "Premiere Periode",
@@ -66,10 +64,8 @@ type Teacher = {
 
 type HomeOption = {
     label: string,
-    // backgroundImage: string,
-    icon: ImageSourcePropType,
+    icon: string,
     routeName: string
-    onPress?: (event: GestureResponderEvent) => void
 }
 
 interface Class {

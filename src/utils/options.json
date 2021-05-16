@@ -1,0 +1,39 @@
+{
+    "options": [{
+            "id": 1,
+            "label": "Retards",
+            "iconName": "timer-off-outline",
+            "routeName": "attendancies"
+        },
+        {
+            "id": 2,
+            "label": "Points",
+            "iconName": "clipboard-text-outline",
+            "routeName": "points"
+        },
+        {
+            "id": 3,
+            "label": "Remarques",
+            "iconName": "account-alert",
+            "routeName": "notices"
+        },
+        {
+            "id": 4,
+            "label": "Mes Cours",
+            "iconName": "book-outline",
+            "routeName": "courses"
+        },
+        {
+            "id": 5,
+            "label": "Ma Classe",
+            "iconName": "school-outline",
+            "routeName": "class"
+        },
+        {
+            "id": 6,
+            "label": "Points",
+            "iconName": "clipboard-text-outline",
+            "routeName": "points"
+        }
+    ]
+}

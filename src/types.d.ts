@@ -1,106 +1,105 @@
 /* eslint-disable no-shadow */
 export enum Periods {
-    FIRST_PERIOD = "Premiere Periode",
-    SECOND_PERIOD = "Deuxieme Periode",
-    FIRST_EXAM = "Examen Premier Semestre",
-    THIRD_PERIOD = "Troisieme Periode",
-    FOURTH_PERIOD = "Quatrieme Periode",
-    SECOND_EXAM = "Examen Second Semestre",
-    SECOND_SESSION = "Deuxieme Session"
+  FIRST_PERIOD = "Premiere Periode",
+  SECOND_PERIOD = "Deuxieme Periode",
+  FIRST_EXAM = "Examen Premier Semestre",
+  THIRD_PERIOD = "Troisieme Periode",
+  FOURTH_PERIOD = "Quatrieme Periode",
+  SECOND_EXAM = "Examen Second Semestre",
+  SECOND_SESSION = "Deuxieme Session",
 }
 
 export enum Degrees {
-    A0 = "A0",
-    A1 = "A1",
-    A2 = "A2",
-    D6 = "D6",
-    L2 = "L2",
-    G3 = "G3",
-    MD = "MD"
+  A0 = "A0",
+  A1 = "A1",
+  A2 = "A2",
+  D6 = "D6",
+  L2 = "L2",
+  G3 = "G3",
+  MD = "MD",
 }
 
 export enum TypeOfCotation {
-    QUIZ = "Interrogation",
-    HOME_WORK = "Devoir A Domicile",
-    CLASS_WORK = "Travail Dirige",
-    EXAM = "Examen",
-    CATCH_UP = "Rattrapage",
-    PRATIC_EXAM = "Examen Pratique",
-    THEORIC_EXAM = "Examen Theorique",
-    HOLLIDAY_WORK = "Travaux des vaccances"
+  QUIZ = "Interrogation",
+  HOME_WORK = "Devoir A Domicile",
+  CLASS_WORK = "Travail Dirige",
+  EXAM = "Examen",
+  CATCH_UP = "Rattrapage",
+  PRATIC_EXAM = "Examen Pratique",
+  THEORIC_EXAM = "Examen Theorique",
+  HOLLIDAY_WORK = "Travaux des vaccances",
 }
 
 interface Identity {
-    name: string;
-    firstName: string;
-    lastName: string;
-    dateOfBirth: Date;
-    placeOfBirth: string
+  name: string;
+  firstName: string;
+  lastName: string;
+  dateOfBirth: Date;
+  placeOfBirth: string;
 }
 
 interface Address {
-    completeAddress: string
+  completeAddress: string;
 }
 
 interface Course {
-    label: string;
-    ponderation?: number;
-    hoursPerWeek?: number;
-    hasExamSession?: boolean;
-    hasSecondSession?: boolean;
+  label: string;
+  ponderation?: number;
+  hoursPerWeek?: number;
+  hasExamSession?: boolean;
+  hasSecondSession?: boolean;
 }
 
 interface Qualification {
-    degree?: Degrees;
-    longetivity?: number
+  degree?: Degrees;
+  longetivity?: number;
 }
 
 type Teacher = {
-    identity?: Identity,
-    address?: Address,
-    courses: [Course],
-    qualification?: Qualification
+  identity?: Identity;
+  address?: Address;
+  courses: [Course];
+  qualification?: Qualification;
 };
 
 type HomeOption = {
-    label: string,
-    icon: string,
-    routeName: string
-    onPress: () => void
-}
+  label: string;
+  icon: string;
+  routeName: string;
+  onPress: () => void;
+};
 
 interface Class {
-    isCO: boolean;
-    isCT: boolean;
-    courses: [Course];
-    label: string;
-    students: [Student]
+  isCO: boolean;
+  isCT: boolean;
+  courses: [Course];
+  label: string;
+  students: [Student];
 }
 
 interface Absence {
-    date: Date;
-    reason?: string;
-    justified?: boolean
+  date: Date;
+  reason?: string;
+  justified?: boolean;
 }
 
 type Cotation = {
-    student: Student,
-    course: Course,
-    period: Periods,
-    type?: TypeOfCotation
-    
-}
+  student: Student;
+  course: Course;
+  period: Periods;
+  type?: TypeOfCotation;
+};
 
 type Student = {
-    identity?: Identity,
-    //guardians?: [Guardian], // Tutaire in french
-    class?: Class,
-    address?: Address,
-    absences?: [Absence],
-    Cotes?: [Cotation]
-}
+  identity?: Identity;
+  //guardians?: [Guardian], // Tutaire in french
+  class?: Class;
+  address?: Address;
+  absences?: [Absence];
+  Cotes?: [Cotation];
+};
 
 type School = {
-    label: string,
-    slogan: string
-}
+  label: string;
+  slogan: string;
+};

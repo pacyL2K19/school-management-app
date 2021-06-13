@@ -1,0 +1,83 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Pacifique\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Pacifique\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Java\jdk-13\bin;C:\Program Files\MATLAB\R2018b\runtime\win64;C:\Program Files\MATLAB\R2018b\bin;C:\Program Files\Git\cmd;C:\Ruby27-x64\bin;C:\Users\Pacifique\AppData\Local\Microsoft\WindowsApps;C:\Users\Pacifique\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\ProgramData\Pacifique\GitHubDesktop\bin;C:\Users\Pacifique\AppData\Local\GitHubDesktop\bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  10.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject",
+      "test": "jest",
+      "test:watch": "jest --watch"
+    },
+    "dependencies": {
+      "@react-native-community/async-storage": "~1.12.0",
+      "@react-native-community/masked-view": "^0.1.10",
+      "@react-navigation/drawer": "^5.12.5",
+      "@react-navigation/material-bottom-tabs": "^5.3.15",
+      "@react-navigation/native": "^5.9.4",
+      "@react-navigation/stack": "^5.14.5",
+      "@testing-library/jest-dom": "^5.12.0",
+      "@testing-library/react": "^11.2.6",
+      "@types/jest": "^26.0.23",
+      "@types/react-native-vector-icons": "^6.4.6",
+      "@types/react-navigation": "^3.4.0",
+      "axios": "^0.21.1",
+      "eslint-config-react-native-typescript": "^2.2.6",
+      "expo": "^41.0.0",
+      "expo-linear-gradient": "^9.1.0",
+      "expo-location": "~12.0.4",
+      "expo-status-bar": "~1.0.4",
+      "jest": "^26.6.3",
+      "react": "16.13.1",
+      "react-dom": "16.13.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+      "react-native-gesture-handler": "~1.10.2",
+      "react-native-paper": "^4.8.1",
+      "react-native-reanimated": "~2.1.0",
+      "react-native-safe-area-context": "^3.2.0",
+      "react-native-screens": "~3.0.0",
+      "react-native-tiny-toast": "^1.0.7",
+      "react-native-vector-icons": "^8.1.0",
+      "react-native-web": "~0.13.12",
+      "react-redux": "^7.2.4",
+      "redux-thunk": "^2.3.0",
+      "ts-jest": "^26.5.6"
+    },
+    "devDependencies": {
+      "@babel/core": "~7.9.0",
+      "@types/react": "~16.9.35",
+      "@types/react-native": "~0.63.2",
+      "@typescript-eslint/eslint-plugin": "^4.22.1",
+      "@typescript-eslint/parser": "^4.22.1",
+      "eslint": "^7.25.0",
+      "eslint-plugin-react": "^7.23.2",
+      "typescript": "~4.0.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

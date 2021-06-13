@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-enum Periods {
+export enum Periods {
     FIRST_PERIOD = "Premiere Periode",
     SECOND_PERIOD = "Deuxieme Periode",
     FIRST_EXAM = "Examen Premier Semestre",
@@ -9,7 +9,7 @@ enum Periods {
     SECOND_SESSION = "Deuxieme Session"
 }
 
-enum Degrees {
+export enum Degrees {
     A0 = "A0",
     A1 = "A1",
     A2 = "A2",
@@ -19,7 +19,7 @@ enum Degrees {
     MD = "MD"
 }
 
-enum TypeOfCotation {
+export enum TypeOfCotation {
     QUIZ = "Interrogation",
     HOME_WORK = "Devoir A Domicile",
     CLASS_WORK = "Travail Dirige",
@@ -36,11 +36,11 @@ interface Identity {
     lastName: string;
     dateOfBirth: Date;
     placeOfBirth: string
-};
+}
 
 interface Address {
     completeAddress: string
-};
+}
 
 interface Course {
     label: string;
@@ -48,12 +48,12 @@ interface Course {
     hoursPerWeek?: number;
     hasExamSession?: boolean;
     hasSecondSession?: boolean;
-};
+}
 
 interface Qualification {
     degree?: Degrees;
     longetivity?: number
-};
+}
 
 type Teacher = {
     identity?: Identity,
@@ -75,7 +75,7 @@ interface Class {
     courses: [Course];
     label: string;
     students: [Student]
-};
+}
 
 interface Absence {
     date: Date;
@@ -91,9 +91,9 @@ type Cotation = {
     
 }
 
-type Students = {
+type Student = {
     identity?: Identity,
-    guardians?: [Guardian], // Tutaire in french
+    //guardians?: [Guardian], // Tutaire in french
     class?: Class,
     address?: Address,
     absences?: [Absence],

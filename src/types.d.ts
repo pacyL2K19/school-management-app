@@ -123,4 +123,3 @@ type Notification = {
   seen?: boolean;
   severityLevel?: "LOW" | "HIGH" | "MEDIUM"
 }
-

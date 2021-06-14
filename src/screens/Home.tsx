@@ -21,11 +21,11 @@ import {
   QuickActionHome,
 } from "../components/";
 import avatar from "../assets/teacher.png";
-import attendances from "../assets/attendance.png";
 import { bgTextInputColor, blackTextColor, whiteColor } from "../core";
 import data from "../utils/options.json";
 import { NavigationScreenProp } from "react-navigation";
 import { HomeOption } from "../types";
+import { DrawerActions } from "@react-navigation/native";
 
 interface Props {
   options: [HomeOption];
@@ -46,11 +46,11 @@ const Home: React.FC<Props> = (props: Props) => {
         <View style={{ marginBottom: 50 }}>
           <View style={styles.header}>
             <View style={styles.headerSubContainer}>
-              <TouchableOpacity style={styles.humburger}>
-                <Icon name="menu" size={30} color="#000" />
+              <TouchableOpacity style={styles.humburger} onPress={() => props.navigation.dispatch(DrawerActions.openDrawer())}>
+                <Icon name="menu" size={30} color={blackTextColor} />
               </TouchableOpacity>
               <View style={styles.rightHeader}>
-                <TouchableOpacity style={{ marginRight: 20 }}>
+                <TouchableOpacity style={{ marginRight: 20 }} onPress={() => props.navigation.navigate("Notifications")}>
                   <Text style={styles.badge}>10</Text>
                   <MaterialIcon
                     name="notifications-none"

@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { LoginScreen, Blank } from "../screens";
 import DrawerNavigation from "./Drawer";
 import Schools from "../screens/Schools";
+import Notifications from "../screens/Notifications";
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,13 @@ const StackScreens = () => {
       <Stack.Screen
         name="attendancies"
         component={Blank}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Notifications"
+        component={Notifications}
         options={{
           headerShown: false,
         }}

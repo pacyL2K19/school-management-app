@@ -13,7 +13,7 @@ interface SchoolsProps {
 const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
   const [listSchools, setListSchools] = useState<School[] | []>([]);
   const handlePress = (id: String) => {
-    navigation.navigate("Login", { idSchool: id });
+    navigation.navigate("Auth", { idSchool: id });
   };
   useEffect(() => {
     const list: School[] = [

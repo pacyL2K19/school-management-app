@@ -115,10 +115,12 @@ type School = {
 };
 
 type Notification = {
-  date: Date,
-  category: string,
-  content: string,
-  seen: boolean,
-  severityLevel: "LOW" | "HIGH" | "MEDIUM"
+  time: string;
+  title: string;
+  circleColor?: string;
+  lineColor?: string;
+  description?: string;
+  seen?: boolean;
+  severityLevel?: "LOW" | "HIGH" | "MEDIUM"
 }
 

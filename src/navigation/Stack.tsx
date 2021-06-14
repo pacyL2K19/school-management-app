@@ -41,9 +41,6 @@ const StackScreens = () => {
       <Stack.Screen
         name="Notifications"
         component={Notifications}
-        options={{
-          headerShown: false,
-        }}
       />
     </Stack.Navigator>
   );

@@ -4,7 +4,7 @@
       "id": 3,
       "label": "Remarques",
       "iconName": "account-alert",
-      "routeName": "notices"
+      "routeName": "remarks"
     },
     {
       "id": 4,

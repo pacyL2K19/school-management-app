@@ -1,22 +1,24 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import {
-  Remark,
-  Courses,
-  Stats,
-  Results
-} from "../screens/"
+import { Remark, Courses, Stats, Results, Home } from "../screens/";
 
 const Stack = createStackNavigator();
 
-const StackScreens = () => {
+const HomeStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Schools">
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="remarks"
         component={Remark}
         options={{
-          headerShown: false,
+          headerTitle: "Remarques"
         }}
       />
       <Stack.Screen
@@ -44,4 +46,4 @@ const StackScreens = () => {
   );
 };
 
-export default StackScreens;
+export default HomeStack;

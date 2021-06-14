@@ -1,7 +1,8 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { Home, Blank } from "../screens/";
+import { Blank } from "../screens/";
+import HomeStack from "./HomeStack";
 import { primaryButtonColor, blackTextColor } from "../core";
 
 const Tab = createMaterialBottomTabNavigator();
@@ -39,7 +40,7 @@ const Tabs = () => {
         },
       })}
     >
-      <Tab.Screen name="Accueil" component={Home} />
+      <Tab.Screen name="Accueil" component={HomeStack} />
       <Tab.Screen name="Cours" component={Blank} />
       <Tab.Screen name="Parametres" component={Blank} />
     </Tab.Navigator>

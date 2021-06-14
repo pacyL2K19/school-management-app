@@ -7,17 +7,16 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-// import { primaryButtonColor, whiteColor } from "../core";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { School } from "../../types";
 import logo from "../../assets/logo.jpg";
-// import { HomeOption } from "../types";
 import { whiteColor } from '../../core/theme/colors';
 
 const SchoolCard: React.FC<School> = (props: School) => {
   return (
     <TouchableOpacity
       style={styles.container}
+      onPress={() => props.onPress(props.id)}
     >
       <Image
         source={logo}

@@ -7,7 +7,7 @@ import {
   Dimensions,
 } from "react-native";
 
-import { bgHomeColor } from "../core/theme/colors";
+import { bgHomeColor, primaryButtonColor } from '../core/theme/colors';
 import { School } from "../types";
 
 interface Props {
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     paddingTop: HEIGHT_DEVICE / 6,
     paddingHorizontal: 20,
     paddingBottom: 35,
-    backgroundColor: bgHomeColor,
+    backgroundColor: primaryButtonColor,
     borderBottomRightRadius: WIDTH_DEVICE / 3,
   },
   schoolSlogan: {

@@ -26,7 +26,7 @@ interface LoginProps {
   OnUserLogin: Function
   OnUserSignup: Function
   userReducer: UserState,
-  navigation: NavigationScreenProp<any,any>
+  navigation: NavigationScreenProp<any, any>
 }
 
 const _LoginScreen: React.FC<LoginProps> = ({
@@ -36,23 +36,11 @@ const _LoginScreen: React.FC<LoginProps> = ({
   navigation
 }) => {
   const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [title, setTitle] = useState('Connexion')
-  const [isSignup, setIsSignup] = useState(false)
 
   const onTapAuthenticate = () => {
     navigation.navigate("Home")
-    // if (isSignup) {
-    //   OnUserSignup(email, phone, password)
-    // } else {
-    //   OnUserLogin(email, password)
-    // }
-  }
-
-  const onTapOptions = () => {
-    setIsSignup(!isSignup)
-    setTitle(!isSignup ? `S'inscrire` : 'Connexion')
   }
 
   return (
@@ -77,67 +65,16 @@ const _LoginScreen: React.FC<LoginProps> = ({
           onTextChange={setEmail}
           isSecure={false}
         />
-
-        {isSignup && (
-          <>
-            <TextField
-              placeholder='Numero de telephone'
-              onTextChange={setPhone}
-              isSecure={false}
-            />
-            <TextField
-              placeholder='Classe'
-              onTextChange={setPhone}
-              isSecure={false}
-            />
-          </>
-        )}
         <TextField
           placeholder='Mot de passe'
           onTextChange={setPassword}
           isSecure={true}
         />
-        {
-          !isSignup && (
-            <TouchableOpacity>
-              <Text style={styles.textLink}>
-                Mot de passe oublie ?
-              </Text>
-            </TouchableOpacity>
-          )
-        }
-        {isSignup && (
-          <>
-            <TextField
-              placeholder='Confirmer mot de passe'
-              onTextChange={setPhone}
-              isSecure={true}
-            />
-            <TextField
-              placeholder='OTP Code'
-              onTextChange={setPhone}
-              isSecure={false}
-            />
-          </>
-        )}
-
         <ButtonWithTitle
           title={title}
           height={50}
           width={Dimensions.get('window').width - 60}
           onTap={onTapAuthenticate}
-        />
-
-        <ButtonWithTitle
-          title={
-            !isSignup
-              ? 'Pas de compte ? En creer'
-              : 'Vous avez deja un compte ? Connectez-vous'
-          }
-          height={50}
-          width={Dimensions.get('window').width}
-          onTap={onTapOptions}
-          isNoBg={true}
         />
       </View>
     </ScrollView>

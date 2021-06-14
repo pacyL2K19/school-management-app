@@ -1,3 +1,5 @@
+import { ImageSource } from "react-native-vector-icons/Icon";
+
 /* eslint-disable no-shadow */
 export enum Periods {
   FIRST_PERIOD = "Premiere Periode",

@@ -32,6 +32,12 @@ export enum TypeOfCotation {
   HOLLIDAY_WORK = "Travaux des vaccances",
 }
 
+// export enum NotificationCategory {
+//   LATE_UPDATE = "Mise a jour en retard",
+//   PROFESORAL_BODY_MESSAGE = "Au corps professoral",
+
+// }
+
 interface Identity {
   name: string;
   firstName: string;
@@ -107,3 +113,12 @@ type School = {
   id: string,
   onPress: (id: string) => void
 };
+
+type Notification = {
+  date: Date,
+  category: string,
+  content: string,
+  seen: boolean,
+  severityLevel: "LOW" | "HIGH" | "MEDIUM"
+}
+

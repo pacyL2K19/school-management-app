@@ -12,10 +12,13 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { School } from "../../types";
 import logo from "../../assets/logo.jpg";
 // import { HomeOption } from "../types";
+import { whiteColor } from '../../core/theme/colors';
 
 const SchoolCard: React.FC<School> = (props: School) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      style={styles.container}
+    >
       <Image
         source={logo}
         style={styles.logo}
@@ -35,12 +38,24 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 40,
+    marginVertical: 5
   },
   label: {
     fontSize: 18
   },
   slog: {
     fontSize: 14
+  },
+  container: {
+    flex: 1,
+    width: Dimensions.get("window").width / 2.2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 10,
+    padding: 10,
+    marginHorizontal: 5,
+    borderRadius: 5,
+    backgroundColor: "#fff"
   }
 });
 

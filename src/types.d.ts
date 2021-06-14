@@ -104,4 +104,5 @@ type Student = {
 type School = {
   label: string;
   slogan: string;
+  id: string
 };

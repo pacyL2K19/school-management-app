@@ -2,14 +2,22 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { LoginScreen, Blank } from "../screens";
 import DrawerNavigation from "./Drawer";
+import Schools from "../screens/Schools";
 
 const Stack = createStackNavigator();
 
 const StackScreens = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Auth"
+            initialRouteName="Schools"
         >
+            <Stack.Screen
+                name="Schools"
+                component={Schools}
+                options={{
+                    headerShown: false
+                }}
+            />
             <Stack.Screen
                 name="Home"
                 component={DrawerNavigation}

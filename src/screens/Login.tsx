@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -6,110 +6,109 @@ import {
   ScrollView,
   Dimensions,
   Image,
-  TouchableOpacity
-} from 'react-native'
-import { TextField } from '../components'
-import { ButtonWithTitle } from '../components/ButtonWithTittle/ButtonWithTitle'
-import { connect } from 'react-redux'
+  TouchableOpacity,
+} from "react-native";
+import { TextField } from "../components";
+import { ButtonWithTitle } from "../components/ButtonWithTittle/ButtonWithTitle";
+import { connect } from "react-redux";
 import {
   ApplicationState,
   OnUserLogin,
   OnUserSignup,
-  UserState
-} from '../redux'
+  UserState,
+} from "../redux";
 
-import topImg from '../assets/logo.jpg'
-import { whiteColor } from '../core'
-import { NavigationScreenProp } from 'react-navigation'
+import topImg from "../assets/logo.jpg";
+import { whiteColor } from "../core";
+import { NavigationScreenProp } from "react-navigation";
 
 interface LoginProps {
-  OnUserLogin: Function
-  OnUserSignup: Function
-  userReducer: UserState,
-  navigation: NavigationScreenProp<any, any>
+  OnUserLogin: Function;
+  OnUserSignup: Function;
+  userReducer: UserState;
+  navigation: NavigationScreenProp<any, any>;
 }
 
 const _LoginScreen: React.FC<LoginProps> = ({
   OnUserLogin,
   OnUserSignup,
   userReducer,
-  navigation
+  navigation,
 }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [title, setTitle] = useState('Connexion')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("Connexion");
 
   const onTapAuthenticate = () => {
-    navigation.navigate("Home")
-  }
+    navigation.navigate("Home");
+  };
 
   return (
     <ScrollView style={styles.container}>
-      <Image
-        source={topImg}
-        style={styles.img}
-      />
+      <Image source={topImg} style={styles.img} />
       <View>
-        <Text style={{
-          fontSize: 25,
-          textAlign: 'center',
-          marginBottom: 30,
-          fontWeight: '400'
-        }}>
+        <Text
+          style={{
+            fontSize: 25,
+            textAlign: "center",
+            marginBottom: 30,
+            fontWeight: "400",
+          }}
+        >
           {title}
         </Text>
       </View>
       <View style={styles.body}>
         <TextField
-          placeholder='Adresse email'
+          placeholder="Adresse email"
           onTextChange={setEmail}
           isSecure={false}
         />
         <TextField
-          placeholder='Mot de passe'
+          placeholder="Mot de passe"
           onTextChange={setPassword}
           isSecure={true}
         />
         <ButtonWithTitle
           title={title}
           height={50}
-          width={Dimensions.get('window').width - 60}
+          width={Dimensions.get("window").width - 60}
           onTap={onTapAuthenticate}
         />
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: whiteColor,
-    paddingTop: Dimensions.get('window').height / 15,
+    paddingTop: Dimensions.get("window").height / 15,
   },
   textLink: {
-    marginLeft: '50%',
+    marginLeft: "50%",
     marginVertical: 10,
-    color: 'gray'
+    color: "gray",
   },
   body: {
-    alignItems: 'center',
-    marginBottom: 100
+    alignItems: "center",
+    marginBottom: 100,
   },
   img: {
-    alignSelf: 'center',
+    alignSelf: "center",
     height: 100,
     borderRadius: 50,
     width: 100,
-    margin: 15
+    margin: 15,
   },
-})
+});
 
 const mapStateToProps = (state: ApplicationState) => ({
-  userReducer: state.userReducer
-})
+  userReducer: state.userReducer,
+});
 
 const LoginScreen = connect(mapStateToProps, { OnUserLogin, OnUserSignup })(
   _LoginScreen
-)
+);
 
-export { LoginScreen }
+export { LoginScreen };

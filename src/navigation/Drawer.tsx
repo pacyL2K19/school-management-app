@@ -5,14 +5,14 @@ import DrawerContent from "./components/DrawerContent";
 
 const Drawer = createDrawerNavigator();
 function DrawerNavigation() {
-    return (
-        <Drawer.Navigator
-            initialRouteName="Home"
-            drawerContent={props => <DrawerContent {...props} />}
-        >
-            <Drawer.Screen name="Home" component={Tabs} />
-        </Drawer.Navigator>
-    );
+  return (
+    <Drawer.Navigator
+      initialRouteName="Home"
+      drawerContent={(props) => <DrawerContent {...props} />}
+    >
+      <Drawer.Screen name="Home" component={Tabs} />
+    </Drawer.Navigator>
+  );
 }
 
 export default DrawerNavigation;

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
-const Blank: React.FC = () => {
+const Courses: React.FC = () => {
   return (
     <View style={styles.header}>
       <Text style={styles.welcome}>Bienvenue</Text>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Blank;
+export default Courses;

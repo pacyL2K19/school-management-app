@@ -1,3 +1,5 @@
+import { ImageSource } from "react-native-vector-icons/Icon";
+
 /* eslint-disable no-shadow */
 export enum Periods {
   FIRST_PERIOD = "Premiere Periode",
@@ -29,6 +31,12 @@ export enum TypeOfCotation {
   THEORIC_EXAM = "Examen Theorique",
   HOLLIDAY_WORK = "Travaux des vaccances",
 }
+
+// export enum NotificationCategory {
+//   LATE_UPDATE = "Mise a jour en retard",
+//   PROFESORAL_BODY_MESSAGE = "Au corps professoral",
+
+// }
 
 interface Identity {
   name: string;
@@ -102,4 +110,16 @@ type Student = {
 type School = {
   label: string;
   slogan: string;
+  id: string,
+  onPress: (id: string) => void
 };
+
+type Notification = {
+  time: string;
+  title: string;
+  circleColor?: string;
+  lineColor?: string;
+  description?: string;
+  seen?: boolean;
+  severityLevel?: "LOW" | "HIGH" | "MEDIUM"
+}

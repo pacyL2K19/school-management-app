@@ -5,14 +5,14 @@ import RNPickerSelect from "react-native-picker-select";
 const Remark: React.FC = () => {
   return (
     <View style={styles.header}>
-      {/* <RNPickerSelect
+      <RNPickerSelect
         onValueChange={(value) => console.log(value)}
         items={[
           { label: "Football", value: "football" },
           { label: "Baseball", value: "baseball" },
           { label: "Hockey", value: "hockey" },
         ]}
-      /> */}
+      />
     </View>
   );
 };

@@ -6,10 +6,10 @@ import SearchBar from "./SearchBar";
 import QuickActionHome from "./QuickActionHome";
 
 export {
-    TextField,
-    ButtonWithTitle,
-    CardOptions,
-    HeaderHome,
-    SearchBar,
-    QuickActionHome
-}
+  TextField,
+  ButtonWithTitle,
+  CardOptions,
+  HeaderHome,
+  SearchBar,
+  QuickActionHome,
+};

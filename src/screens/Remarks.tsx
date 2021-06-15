@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { Picker } from "@react-native-picker/picker";
+import RNPickerSelect from "react-native-picker-select";
 
 const Remark: React.FC = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState();
   return (
     <View style={styles.header}>
-      <Picker
-        selectedValue={selectedLanguage}
-        onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)}
-      >
-        <Picker.Item label="Java" value="java" />
-        <Picker.Item label="JavaScript" value="js" />
-      </Picker>
+      {/* <RNPickerSelect
+        onValueChange={(value) => console.log(value)}
+        items={[
+          { label: "Football", value: "football" },
+          { label: "Baseball", value: "baseball" },
+          { label: "Hockey", value: "hockey" },
+        ]}
+      /> */}
     </View>
   );
 };
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   header: {
-    // paddingTop: 200,
+    paddingTop: 200,
     paddingHorizontal: 20,
   },
 });

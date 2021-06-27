@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   StyleSheet,
   View,
@@ -21,6 +21,8 @@ import {
 import topImg from "../assets/logo.jpg";
 import { whiteColor } from "../core";
 import { NavigationScreenProp } from "react-navigation";
+import { Login } from "../ApiClient";
+import { MyGlobalContext } from "../context/index";
 
 interface LoginProps {
   OnUserLogin: Function;
@@ -37,12 +39,23 @@ const _LoginScreen: React.FC<LoginProps> = ({
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [title, setTitle] = useState("Connexion");
+  const [title] = useState("Connexion");
+  const [message, setMessage] = useState("");
+  const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
 
   const onTapAuthenticate = async () => {
     // call the api
     // const res = await fetch("")
-    navigation.navigate("Home");
+    const response = await Login(email, password);
+    if (response) {
+      setAccountInfo({
+        schoolId: response?.schoolId,
+        teachearId: response?.teacherId,
+      });
+      navigation.navigate("Home");
+    } else {
+      setMessage("Email ou mot de passe incorrect, veuillez reessayer");
+    }
   };
 
   return (

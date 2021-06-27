@@ -57,7 +57,6 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
         onPress: (id: string) => {},
       },
     ];
-    // setListSchools(list);
   }, []);
   return (
     <View style={styles.header}>

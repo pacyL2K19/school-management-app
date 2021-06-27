@@ -114,7 +114,7 @@ type Student = {
 
 type School = {
   label: string;
-  slogan: string;
+  slogan?: string;
   id: string,
   onPress: (id: string) => void
 };

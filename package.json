@@ -41,6 +41,7 @@
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "~3.0.0",
     "react-native-sectioned-multi-select": "^0.8.1",
+    "react-native-skeleton-placeholder": "^4.0.0",
     "react-native-timeline-flatlist": "^0.7.6",
     "react-native-tiny-toast": "^1.0.7",
     "react-native-vector-icons": "^8.1.0",

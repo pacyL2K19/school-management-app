@@ -1,7 +1,7 @@
 import React from "react";
-import { View, StyleSheet, Text, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
-import { bgHomeColor, whiteColor } from "../core/theme/colors";
+import { whiteColor } from "../core/theme/colors";
 
 const SchoolsSkeleton: React.FC = () => {
   const WIDTH_DEVICE = Dimensions.get("window").width;

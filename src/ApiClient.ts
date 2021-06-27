@@ -1,5 +1,6 @@
 import { AccountInfo } from "./types";
 const apiUrl = "https://smbackend123.herokuapp.com/api/";
+import jwtDecode from "jwt-decode";
 
 export const Login = async (email: string, password: string) => {
   try {
@@ -36,5 +37,15 @@ export const getSchools = async () => {
     return resJson;
   } catch (error) {
     return null;
+  }
+};
+
+export const isUserConnected = (user: any): boolean => {
+  let today = Date.now();
+  let expire = jwtDecode(JSON.parse(user).token).exp * 1000;
+  if (expire - today > 0) {
+    return true;
+  } else {
+    return false;
   }
 };

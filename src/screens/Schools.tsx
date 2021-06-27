@@ -6,7 +6,8 @@ import { School } from "../types";
 import { primaryButtonColor } from "../core/theme/colors";
 import { NavigationScreenProp } from "react-navigation";
 import { MyGlobalContext } from "../context";
-import { getSchools } from "../ApiClient";
+import { getSchools, isUserConnected } from "../ApiClient";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface SchoolsProps {
   navigation: NavigationScreenProp<any, any>;
@@ -18,18 +19,32 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
   const handlePress = (id: string) => {
     setAccountInfo({
       teachearId: "",
-      schoolId: id
-    })
+      schoolId: id,
+    });
     navigation.navigate("Auth", { idSchool: id });
   };
   useEffect(() => {
-    getSchools()
-      .then((res) => {
-        if (res.success) {
-          console.log(res);
-          setListSchools(res.schools);
+    AsyncStorage.getItem("currentUser")
+      .then((user) => {
+        if (user && isUserConnected(user)) {
+          setAccountInfo({
+            schoolId: user?.schoolId,
+            teachearId: user?.id,
+          });
+          navigation.navigate("Home");
         } else {
-          console.log(res);
+          getSchools()
+            .then((res) => {
+              if (res.success) {
+                console.log(res);
+                setListSchools(res.schools);
+              } else {
+                console.log(res);
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       })
       .catch((error) => {

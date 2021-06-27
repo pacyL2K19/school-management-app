@@ -42,30 +42,32 @@ const _LoginScreen: React.FC<LoginProps> = ({
   const [password, setPassword] = useState("");
   const [title] = useState("Connexion");
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
 
   const onTapAuthenticate = async () => {
-    // call the api
-    // const res = await fetch("")
-    setLoading(true)
+    setLoading(true);
     const response = await Login(email, password);
     if (response?.success) {
       console.log(response);
-      
-      setAccountInfo({
-        schoolId: response?.SchoolId,
-        teachearId: response?.id,
-      });
-      setLoading(false)
-      navigation.navigate("Home");
+      if (accountInfo?.schoolId.toString() !== response.user.id.toString()) {
+        setMessage("Cette ecole ne reconnait pas votre compte");
+        setLoading(false);
+      } else {
+        setAccountInfo({
+          schoolId: response?.SchoolId,
+          teachearId: response?.id,
+        });
+        setLoading(false);
+        navigation.navigate("Home");
+      }
     } else {
       console.log(response);
-      
+
       setMessage("Email ou mot de passe incorrect, veuillez reessayer");
-      setEmail("")
-      setPassword("")
-      setLoading(false)
+      setEmail("");
+      setPassword("");
+      setLoading(false);
     }
   };
 
@@ -101,7 +103,11 @@ const _LoginScreen: React.FC<LoginProps> = ({
           width={Dimensions.get("window").width - 60}
           onTap={onTapAuthenticate}
         />
-        <View style={{backgroundColor: dangerColor, marginTop: 20}}>{message !== "" && <Text style={{color: whiteColor, padding: 10}}>{message}</Text>}</View>
+        <View style={{ backgroundColor: dangerColor, marginTop: 20 }}>
+          {message !== "" && (
+            <Text style={{ color: whiteColor, padding: 10 }}>{message}</Text>
+          )}
+        </View>
       </View>
     </ScrollView>
   );

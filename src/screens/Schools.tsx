@@ -14,10 +14,14 @@ interface SchoolsProps {
 
 const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
   const [listSchools, setListSchools] = useState<any[] | []>([]);
-  const handlePress = (id: String) => {
+  const { setAccountInfo } = useContext(MyGlobalContext);
+  const handlePress = (id: string) => {
+    setAccountInfo({
+      teachearId: "",
+      schoolId: id
+    })
     navigation.navigate("Auth", { idSchool: id });
   };
-  const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
   useEffect(() => {
     getSchools()
       .then((res) => {
@@ -31,32 +35,6 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
       .catch((error) => {
         console.log(error);
       });
-    const list: School[] = [
-      {
-        id: "1",
-        label: "ITIG",
-        slogan: "Duc In altum",
-        onPress: (id: string) => {},
-      },
-      {
-        id: "2",
-        label: "Metanoia",
-        slogan: "Duc In altum",
-        onPress: (id: string) => {},
-      },
-      {
-        id: "3",
-        label: "Lycee X",
-        slogan: "Duc In altum",
-        onPress: (id: string) => {},
-      },
-      {
-        id: "4",
-        label: "Lycee Y",
-        slogan: "Duc In altum",
-        onPress: (id: string) => {},
-      },
-    ];
   }, []);
   return (
     <View style={styles.header}>

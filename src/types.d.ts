@@ -116,6 +116,7 @@ type School = {
   label: string;
   slogan?: string;
   id: string,
+  source?: string,
   onPress: (id: string) => void
 };
 

@@ -1,21 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import SchoolCard from "../components/SchoolCard";
 import { School } from "../types";
 import { primaryButtonColor } from "../core/theme/colors";
 import { NavigationScreenProp } from "react-navigation";
+import { MyGlobalContext } from "../context";
+import { getSchools } from "../ApiClient";
 
 interface SchoolsProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
 const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
-  const [listSchools, setListSchools] = useState<School[] | []>([]);
+  const [listSchools, setListSchools] = useState<any[] | []>([]);
   const handlePress = (id: String) => {
     navigation.navigate("Auth", { idSchool: id });
   };
+  const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
   useEffect(() => {
+    getSchools()
+      .then((res) => {
+        if (res.success) {
+          console.log(res);
+          setListSchools(res.schools);
+        } else {
+          console.log(res);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     const list: School[] = [
       {
         id: "1",
@@ -42,7 +57,7 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
         onPress: (id: string) => {},
       },
     ];
-    setListSchools(list);
+    // setListSchools(list);
   }, []);
   return (
     <View style={styles.header}>
@@ -57,7 +72,8 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
         renderItem={({ item }) => {
           return (
             <SchoolCard
-              label={item.label}
+              source={item.LogoUrl}
+              label={item.Name}
               slogan={item.slogan}
               id={item.id}
               onPress={handlePress}

@@ -18,7 +18,10 @@ const SchoolCard: React.FC<School> = (props: School) => {
       style={styles.container}
       onPress={() => props.onPress(props.id)}
     >
-      <Image source={logo} style={styles.logo} />
+      <Image
+        source={props.source ? { uri: props.source } : logo}
+        style={styles.logo}
+      />
       <Text style={styles.label}>{props.label}</Text>
       <Text style={styles.slog}>{props.slogan}</Text>
     </TouchableOpacity>

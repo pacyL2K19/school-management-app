@@ -93,7 +93,7 @@ export interface AccountInfo {
   mName?: string;
   email?: string;
   phone?: string;
-  address?: string
+  address?: string;
 }
 
 type Cotation = {

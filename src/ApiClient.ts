@@ -21,3 +21,20 @@ export const Login = async (email: string, password: string) => {
     return null;
   }
 };
+
+export const getSchools = async () => {
+  try {
+    const res = await fetch(apiUrl + "school/schools", {
+      mode: "cors",
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+    });
+    const resJson = await res.json();
+    return resJson;
+  } catch (error) {
+    return null;
+  }
+};

@@ -24,6 +24,7 @@ import { NavigationScreenProp } from "react-navigation";
 import { Login } from "../ApiClient";
 import { MyGlobalContext } from "../context/index";
 import { dangerColor } from "../core/theme/colors";
+import AsyncStorage from "@react-native-community/async-storage";
 
 interface LoginProps {
   OnUserLogin: Function;
@@ -55,15 +56,25 @@ const _LoginScreen: React.FC<LoginProps> = ({
         setLoading(false);
       } else {
         setAccountInfo({
-          schoolId: response?.SchoolId,
-          teachearId: response?.id,
+          schoolId: response?.user.SchoolId,
+          teachearId: response?.user.id,
+          fName: response?.user.FName,
+          lName: response?.user.LName,
+          mName: response?.user.MName,
+          email: response?.user.Email,
+          phone: response?.user.Phone,
+          address: response?.user.Address,
         });
-        setLoading(false);
-        navigation.navigate("Home");
+        AsyncStorage.setItem("currentUser", JSON.stringify(response.user))
+          .then(() => {
+            setLoading(false);
+            navigation.navigate("Home");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     } else {
-      console.log(response);
-
       setMessage("Email ou mot de passe incorrect, veuillez reessayer");
       setEmail("");
       setPassword("");

@@ -15,8 +15,8 @@ interface SchoolsProps {
 
 const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
   const [listSchools, setListSchools] = useState<any[] | []>([]),
-    [loading, setLoading] = useState(false);
-  const { setAccountInfo } = useContext(MyGlobalContext);
+    [loading, setLoading] = useState(false),
+    { setAccountInfo } = useContext(MyGlobalContext);
   const handlePress = (id: string) => {
     setAccountInfo({
       teachearId: "",

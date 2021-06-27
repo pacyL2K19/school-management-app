@@ -8,13 +8,15 @@ import { NavigationScreenProp } from "react-navigation";
 import { MyGlobalContext } from "../context";
 import { getSchools, isUserConnected } from "../ApiClient";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SchoolsSkeleton from "../UISkeletons/Schools";
 
 interface SchoolsProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
 const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
-  const [listSchools, setListSchools] = useState<any[] | []>([]);
+  const [listSchools, setListSchools] = useState<any[] | []>([]),
+    [loading, setLoading] = useState(false);
   const { setAccountInfo } = useContext(MyGlobalContext);
   const handlePress = (id: string) => {
     setAccountInfo({
@@ -24,6 +26,7 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
     navigation.navigate("Auth", { idSchool: id });
   };
   useEffect(() => {
+    setLoading(true);
     AsyncStorage.getItem("currentUser")
       .then((user) => {
         if (user && isUserConnected(user)) {
@@ -31,6 +34,7 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
             schoolId: user?.schoolId,
             teachearId: user?.id,
           });
+          setLoading(false);
           navigation.navigate("Home");
         } else {
           getSchools()
@@ -38,6 +42,7 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
               if (res.success) {
                 console.log(res);
                 setListSchools(res.schools);
+                setLoading(false);
               } else {
                 console.log(res);
               }
@@ -55,24 +60,28 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
     <View style={styles.header}>
       <Text style={styles.mainText}>Bienvenue</Text>
       <Text style={styles.secondaryText}>Selectionner votre ecole</Text>
-      <FlatList
-        data={listSchools}
-        keyExtractor={(item) => {
-          return item.id;
-        }}
-        numColumns={2}
-        renderItem={({ item }) => {
-          return (
-            <SchoolCard
-              source={item.LogoUrl}
-              label={item.Name}
-              slogan={item.slogan}
-              id={item.id}
-              onPress={handlePress}
-            />
-          );
-        }}
-      />
+      {loading ? (
+        <SchoolsSkeleton />
+      ) : (
+        <FlatList
+          data={listSchools}
+          keyExtractor={(item) => {
+            return item.id;
+          }}
+          numColumns={2}
+          renderItem={({ item }) => {
+            return (
+              <SchoolCard
+                source={item.LogoUrl}
+                label={item.Name}
+                slogan={item.slogan}
+                id={item.id}
+                onPress={handlePress}
+              />
+            );
+          }}
+        />
+      )}
     </View>
   );
 };

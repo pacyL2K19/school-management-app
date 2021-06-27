@@ -3,6 +3,6 @@ import { GlobalContent } from "../types";
 
 export const MyGlobalContext = createContext<GlobalContent>({
   accountInfo: null,
-  setAccount: () => {},
+  setAccountInfo: () => {},
 });
 export const useGlobalContext = () => useContext(MyGlobalContext);

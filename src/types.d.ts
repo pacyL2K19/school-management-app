@@ -131,5 +131,5 @@ type Notification = {
 
 type GlobalContent = {
   accountInfo: AccountInfo | null;
-  setAccount: (c: AccountInfo) => void;
+  setAccountInfo: (c: AccountInfo) => void;
 };

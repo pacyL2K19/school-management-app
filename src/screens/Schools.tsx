@@ -36,6 +36,8 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
           setLoading(false);
           navigation.navigate("Home");
         } else {
+          console.log("Here");
+          
           getSchools()
             .then((res) => {
               if (res.success) {
@@ -44,6 +46,7 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
                 setLoading(false);
               } else {
                 console.log(res);
+
               }
             })
             .catch((error) => {

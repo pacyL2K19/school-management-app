@@ -24,7 +24,7 @@ import { NavigationScreenProp } from "react-navigation";
 import { Login } from "../ApiClient";
 import { MyGlobalContext } from "../context/index";
 import { dangerColor } from "../core/theme/colors";
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface LoginProps {
   OnUserLogin: Function;

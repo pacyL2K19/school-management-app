@@ -91,6 +91,11 @@ interface Absence {
   justified?: boolean;
 }
 
+export interface AccountInfo {
+  schoolId: string,
+  teachearId: string
+}
+
 type Cotation = {
   student: Student;
   course: Course;
@@ -123,3 +128,8 @@ type Notification = {
   seen?: boolean;
   severityLevel?: "LOW" | "HIGH" | "MEDIUM"
 }
+
+type GlobalContent = {
+  accountInfo: AccountInfo | null;
+  setAccount: (c: AccountInfo) => void;
+};

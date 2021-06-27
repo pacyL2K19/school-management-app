@@ -39,7 +39,9 @@ const _LoginScreen: React.FC<LoginProps> = ({
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("Connexion");
 
-  const onTapAuthenticate = () => {
+  const onTapAuthenticate = async () => {
+    // call the api
+    // const res = await fetch("")
     navigation.navigate("Home");
   };
 

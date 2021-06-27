@@ -64,6 +64,7 @@ const _LoginScreen: React.FC<LoginProps> = ({
           email: response?.user.Email,
           phone: response?.user.Phone,
           address: response?.user.Address,
+          token: response?.token,
         });
         AsyncStorage.setItem("currentUser", JSON.stringify(response.user))
           .then(() => {

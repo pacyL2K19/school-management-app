@@ -94,6 +94,7 @@ export interface AccountInfo {
   email?: string;
   phone?: string;
   address?: string;
+  token?: string;
 }
 
 type Cotation = {

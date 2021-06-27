@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import SchoolCard from "../components/SchoolCard";
-import { School } from "../types";
 import { primaryButtonColor } from "../core/theme/colors";
 import { NavigationScreenProp } from "react-navigation";
 import { MyGlobalContext } from "../context";

@@ -23,6 +23,7 @@ import { whiteColor } from "../core";
 import { NavigationScreenProp } from "react-navigation";
 import { Login } from "../ApiClient";
 import { MyGlobalContext } from "../context/index";
+import { dangerColor } from "../core/theme/colors";
 
 interface LoginProps {
   OnUserLogin: Function;
@@ -41,20 +42,30 @@ const _LoginScreen: React.FC<LoginProps> = ({
   const [password, setPassword] = useState("");
   const [title] = useState("Connexion");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false)
   const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
 
   const onTapAuthenticate = async () => {
     // call the api
     // const res = await fetch("")
+    setLoading(true)
     const response = await Login(email, password);
-    if (response) {
+    if (response?.success) {
+      console.log(response);
+      
       setAccountInfo({
-        schoolId: response?.schoolId,
-        teachearId: response?.teacherId,
+        schoolId: response?.SchoolId,
+        teachearId: response?.id,
       });
+      setLoading(false)
       navigation.navigate("Home");
     } else {
+      console.log(response);
+      
       setMessage("Email ou mot de passe incorrect, veuillez reessayer");
+      setEmail("")
+      setPassword("")
+      setLoading(false)
     }
   };
 
@@ -85,11 +96,12 @@ const _LoginScreen: React.FC<LoginProps> = ({
           isSecure={true}
         />
         <ButtonWithTitle
-          title={title}
+          title={loading ? "Loading ..." : "Connexion"}
           height={50}
           width={Dimensions.get("window").width - 60}
           onTap={onTapAuthenticate}
         />
+        <View style={{backgroundColor: dangerColor, marginTop: 20}}>{message !== "" && <Text style={{color: whiteColor, padding: 10}}>{message}</Text>}</View>
       </View>
     </ScrollView>
   );

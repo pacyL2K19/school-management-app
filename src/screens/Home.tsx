@@ -65,7 +65,7 @@ const Home: React.FC<Props> = (props: Props) => {
             </View>
           </View>
           <HeaderHome
-            school={{ id: "1", label: "ITIG Don Bosco", slogan: "Duc In Altum", onPress: () => {} }}
+            school={{ id: "1", label: "ITIG", slogan: "", onPress: () => {} }}
           />
           <View style={styles.searchBox}>
             <SearchBar />

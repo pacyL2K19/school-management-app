@@ -184,6 +184,70 @@ export const getPeriodCourse = async (
   }
 };
 
+// -- Get general periods
+
+export const getPeriods = async (idStaff: string) => {
+  try {
+    const res = await fetch(apiUrl + "period/periods/" + "/" + idStaff, {
+      mode: "cors",
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+    });
+    const resJson = await res.json();
+    return resJson;
+  } catch (error) {
+    return null;
+  }
+};
+
+// Remark stores
+
+export const getRemarkStore = async (idStaff: string) => {
+  try {
+    const res = await fetch(apiUrl + "remark/remarks/" + idStaff, {
+      mode: "cors",
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+    });
+    const resJson = await res.json();
+    return resJson;
+  } catch (error) {
+    return null;
+  }
+};
+
+// Add remark to student
+
+export const addRemark = async (
+  idStaff: string,
+  idStudent: string,
+  idRemarkStore: string
+) => {
+  try {
+    const res = await fetch(
+      apiUrl + "remark/" + idStaff + "/" + idStudent + "/" + idRemarkStore,
+      {
+        mode: "cors",
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      }
+    );
+    const resJson = await res.json();
+    return resJson;
+  } catch (error) {
+    return null;
+  }
+};
+
 export const isUserConnected = (user: any): boolean => {
   let today = Date.now();
   let expire = jwtDecode(JSON.parse(user).token).exp * 1000;

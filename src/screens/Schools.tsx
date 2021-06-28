@@ -16,28 +16,37 @@ interface SchoolsProps {
 const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
   const [listSchools, setListSchools] = useState<any[] | []>([]),
     [loading, setLoading] = useState(false),
-    { setAccountInfo } = useContext(MyGlobalContext);
-  const handlePress = (id: string) => {
-    setAccountInfo({
-      teachearId: "",
-      schoolId: id,
-    });
-    navigation.navigate("Auth", { idSchool: id });
-  };
+    { setAccountInfo } = useContext(MyGlobalContext),
+    handlePress = (id: string) => {
+      setAccountInfo({
+        teachearId: "",
+        schoolId: id,
+      });
+      navigation.navigate("Auth", { idSchool: id });
+    };
+
   useEffect(() => {
     setLoading(true);
+
     AsyncStorage.getItem("currentUser")
       .then((user) => {
         if (user && isUserConnected(user)) {
           setAccountInfo({
             schoolId: user?.schoolId,
             teachearId: user?.id,
+            fName: user.fName,
+            lName: user.lName,
+            mName: user.mName,
+            email: user.email,
+            phone: user.phone,
+            address: user.address,
+            token: user.token,
           });
           setLoading(false);
           navigation.navigate("Home");
         } else {
           console.log("Here");
-          
+
           getSchools()
             .then((res) => {
               if (res.success) {
@@ -46,11 +55,12 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
                 setLoading(false);
               } else {
                 console.log(res);
-
+                setLoading(false);
               }
             })
             .catch((error) => {
               console.log(error);
+              setLoading(false);
             });
         }
       })

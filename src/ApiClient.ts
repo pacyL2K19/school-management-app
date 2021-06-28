@@ -97,7 +97,11 @@ export const getCourses = async (idStaff: string) => {
 
 // student ---- search
 
-export const search = async (idStaff: string | undefined, keyword: string) => {
+export const search = async (
+  idStaff: string | undefined,
+  keyword: string,
+  token: string | undefined
+) => {
   try {
     const res = await fetch(
       apiUrl + "student/search/" + keyword + "/" + idStaff,
@@ -107,6 +111,7 @@ export const search = async (idStaff: string | undefined, keyword: string) => {
         headers: {
           Accept: "application/json",
           "Content-type": "application/json",
+          Authorization: "Bearer " + token,
         },
       }
     );
@@ -250,7 +255,7 @@ export const addRemark = async (
 
 export const isUserConnected = (user: any): boolean => {
   console.log(user);
-  
+
   let today = Date.now();
   let expire = jwtDecode(JSON.parse(user).token).exp * 1000;
   if (expire - today > 0) {

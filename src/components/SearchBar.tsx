@@ -24,12 +24,11 @@ const SearchBar: React.FC = () => {
     setKeyword(e.nativeEvent.text);
     if (keyword === "") {
       setListUser(null);
+      setKeyword(" ")
     } else {
       setTimeout(() => {
         search(accountInfo?.teachearId, keyword, accountInfo?.token)
           .then((res) => {
-            console.log(res);
-
             if (res.success) {
               const newUsers = [];
               res.students.forEach((l) => {

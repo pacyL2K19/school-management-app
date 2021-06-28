@@ -1,15 +1,24 @@
 import React, { useState } from "react";
-import { StyleSheet, Image, Text, View, TextInput } from "react-native";
+import { StyleSheet, Image, Text, View, TextInput, NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
 import { bgTextInputColor, whiteColor } from "../core";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { Dimensions } from "react-native";
 import ResultSearch from "./Students/ResultSearch";
 
 const SearchBar: React.FC = () => {
-  const [listUser, setListUser] = useState(null)
+  const [listUser, setListUser] = useState(null);
+  const [keyword, setKeyword] = useState("");
+  const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
+    setKeyword(e.nativeEvent.text)
+  }
   return (
     <View>
-      <TextInput style={styles.input} placeholder="Rechercher rapidement" />
+      <TextInput
+        style={styles.input}
+        placeholder="Rechercher rapidement"
+        value={keyword}
+        onChange={handleChange}
+      />
       <ResultSearch listUser={listUser} />
     </View>
   );

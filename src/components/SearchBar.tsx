@@ -1,15 +1,51 @@
-import React, { useState } from "react";
-import { StyleSheet, Image, Text, View, TextInput, NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
+import React, { useContext, useState } from "react";
+import {
+  StyleSheet,
+  Image,
+  Text,
+  View,
+  TextInput,
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+} from "react-native";
 import { bgTextInputColor, whiteColor } from "../core";
 import { Dimensions } from "react-native";
 import ResultSearch from "./Students/ResultSearch";
+import { search } from "../ApiClient";
+import { MyGlobalContext } from "../context";
 
 const SearchBar: React.FC = () => {
   const [listUser, setListUser] = useState(null);
   const [keyword, setKeyword] = useState("");
-  const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
-    setKeyword(e.nativeEvent.text)
-  }
+  const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
+  const handleChange = async (
+    e: NativeSyntheticEvent<TextInputChangeEventData>
+  ) => {
+    setKeyword(e.nativeEvent.text);
+    setTimeout(() => {
+      search(accountInfo?.teachearId, keyword)
+        .then((res) => {
+          console.log(res);
+          
+          if (res.success) {
+            const newUsers = [];
+            res.students.forEach((l) => {
+              newUsers.push({
+                id: l.id,
+                name: l.FNamr + " " + l.LName + l.MName,
+              });
+            });
+            setListUser(newUsers);
+          } else {
+            console.log(res);
+            
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 1000);
+  };
   return (
     <View>
       <TextInput

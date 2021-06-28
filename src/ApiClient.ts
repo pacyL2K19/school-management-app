@@ -97,10 +97,10 @@ export const getCourses = async (idStaff: string) => {
 
 // student ---- search
 
-export const search = async (idStaff: string, keyword: string) => {
+export const search = async (idStaff: string | undefined, keyword: string) => {
   try {
     const res = await fetch(
-      apiUrl + "student/search/" + "/" + keyword + idStaff,
+      apiUrl + "student/search/" + keyword + "/" + idStaff,
       {
         mode: "cors",
         method: "GET",

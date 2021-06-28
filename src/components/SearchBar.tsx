@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Image, Text, View, TextInput, NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
 import { bgTextInputColor, whiteColor } from "../core";
-import Icon from "react-native-vector-icons/MaterialIcons";
 import { Dimensions } from "react-native";
 import ResultSearch from "./Students/ResultSearch";
 

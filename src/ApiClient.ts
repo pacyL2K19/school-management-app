@@ -97,8 +97,6 @@ export const getCourses = async (idStaff: string) => {
 
 // student ---- search
 
-// http://localhost:8080/api/student/search/:keyword/:idStaff
-
 export const search = async (idStaff: string, keyword: string) => {
   try {
     const res = await fetch(

@@ -27,9 +27,10 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
 
   useEffect(() => {
     setLoading(true);
-
+    
     AsyncStorage.getItem("currentUser")
       .then((user) => {
+        console.log("IS LOGEDIN ?", isUserConnected(user), user);
         if (user && isUserConnected(user)) {
           setAccountInfo({
             schoolId: user?.schoolId,

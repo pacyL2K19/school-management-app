@@ -26,30 +26,26 @@ const SearchBar: React.FC = () => {
       setListUser(null);
     } else {
       setTimeout(() => {
-        if (keyword === "") {
-          setListUser(null);
-        } else {
-          search(accountInfo?.teachearId, keyword, accountInfo?.token)
-            .then((res) => {
-              console.log(res);
+        search(accountInfo?.teachearId, keyword, accountInfo?.token)
+          .then((res) => {
+            console.log(res);
 
-              if (res.success) {
-                const newUsers = [];
-                res.students.forEach((l) => {
-                  newUsers.push({
-                    id: l.id,
-                    name: l.FNamr + " " + l.LName + " " + l.MName,
-                  });
+            if (res.success) {
+              const newUsers = [];
+              res.students.forEach((l) => {
+                newUsers.push({
+                  id: l.id,
+                  name: l.FNamr + " " + l.LName + " " + l.MName,
                 });
-                setListUser(newUsers);
-              } else {
-                console.log(res);
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
+              });
+              setListUser(newUsers);
+            } else {
+              console.log(res);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }, 1000);
     }
   };

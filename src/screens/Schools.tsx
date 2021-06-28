@@ -27,43 +27,43 @@ const Schools: React.FC<SchoolsProps> = ({ navigation }) => {
 
   useEffect(() => {
     setLoading(true);
-    AsyncStorage.getItem("currentUser")
-      .then((user) => {
-        if (user && isUserConnected(user)) {
-          setAccountInfo({
-            schoolId: user?.schoolId,
-            teachearId: user?.id,
-            fName: user.fName,
-            lName: user.lName,
-            mName: user.mName,
-            email: user.email,
-            phone: user.phone,
-            address: user.address,
-            token: user.token,
-          });
+    // AsyncStorage.getItem("currentUser")
+    //   .then((user) => {
+    //     if (user && isUserConnected(user)) {
+    //       setAccountInfo({
+    //         schoolId: user?.schoolId,
+    //         teachearId: user?.id,
+    //         fName: user.fName,
+    //         lName: user.lName,
+    //         mName: user.mName,
+    //         email: user.email,
+    //         phone: user.phone,
+    //         address: user.address,
+    //         token: user.token,
+    //       });
+    //       setLoading(false);
+    //       navigation.navigate("Home");
+    //     } else {
+    getSchools()
+      .then((res) => {
+        if (res.success) {
+          console.log(res);
+          setListSchools(res.schools);
           setLoading(false);
-          navigation.navigate("Home");
         } else {
-          getSchools()
-            .then((res) => {
-              if (res.success) {
-                console.log(res);
-                setListSchools(res.schools);
-                setLoading(false);
-              } else {
-                console.log(res);
-                setLoading(false);
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-              setLoading(false);
-            });
+          console.log(res);
+          setLoading(false);
         }
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
+    //   }
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // });
   }, []);
   return (
     <View style={styles.header}>

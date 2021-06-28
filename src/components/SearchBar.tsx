@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Image, Text, View, TextInput } from "react-native";
 import { bgTextInputColor, whiteColor } from "../core";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { Dimensions } from "react-native";
+import ResultSearch from "./Students/ResultSearch";
 
 const SearchBar: React.FC = () => {
+  const [listUser, setListUser] = useState(null)
   return (
     <View>
       <TextInput style={styles.input} placeholder="Rechercher rapidement" />
+      <ResultSearch listUser={listUser} />
     </View>
   );
 };

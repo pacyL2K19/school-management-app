@@ -46,11 +46,19 @@ const Home: React.FC<Props> = (props: Props) => {
         <View style={{ marginBottom: 50 }}>
           <View style={styles.header}>
             <View style={styles.headerSubContainer}>
-              <TouchableOpacity style={styles.humburger} onPress={() => props.navigation.dispatch(DrawerActions.openDrawer())}>
+              <TouchableOpacity
+                style={styles.humburger}
+                onPress={() =>
+                  props.navigation.dispatch(DrawerActions.openDrawer())
+                }
+              >
                 <Icon name="menu" size={30} color={blackTextColor} />
               </TouchableOpacity>
               <View style={styles.rightHeader}>
-                <TouchableOpacity style={{ marginRight: 20 }} onPress={() => props.navigation.navigate("Notifications")}>
+                <TouchableOpacity
+                  style={{ marginRight: 20 }}
+                  onPress={() => props.navigation.navigate("Notifications")}
+                >
                   <Text style={styles.badge}>10</Text>
                   <MaterialIcon
                     name="notifications-none"
@@ -64,11 +72,13 @@ const Home: React.FC<Props> = (props: Props) => {
               </View>
             </View>
           </View>
-          <HeaderHome
-            school={{ id: "1", label: "ITIG", slogan: "", onPress: () => {} }}
-          />
-          <View style={styles.searchBox}>
-            <SearchBar />
+          <View>
+            <HeaderHome
+              school={{ id: "1", label: "ITIG", slogan: "", onPress: () => {} }}
+            />
+            <View style={styles.searchBox}>
+              <SearchBar />
+            </View>
           </View>
         </View>
         <FlatList
@@ -158,7 +168,8 @@ const styles = StyleSheet.create({
   },
   searchBox: {
     position: "absolute",
-    bottom: -25,
+    // bottom: -25,
+    top: 220,
     zIndex: 100,
   },
   btnBottom: {

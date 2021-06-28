@@ -57,9 +57,9 @@ const Home: React.FC<Props> = (props: Props) => {
               <View style={styles.rightHeader}>
                 <TouchableOpacity
                   style={{ marginRight: 20 }}
-                  onPress={() => props.navigation.navigate("Notifications")}
+                  // onPress={() => props.navigation.navigate("Notifications")}
                 >
-                  <Text style={styles.badge}>10</Text>
+                  <Text style={styles.badge}>0</Text>
                   <MaterialIcon
                     name="notifications-none"
                     color={bgTextInputColor}

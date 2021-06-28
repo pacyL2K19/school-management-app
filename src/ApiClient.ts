@@ -117,6 +117,73 @@ export const search = async (idStaff: string, keyword: string) => {
   }
 };
 
+// student --- markStudent
+// result/:idStaff/:idStudent/:idPeriodCourse
+
+export const markStudent = async (
+  idStaff: string,
+  idStudent: string,
+  idPeriodCourse: string,
+  mark: number
+) => {
+  try {
+    const res = await fetch(
+      apiUrl + "result/" + idStaff + "/" + idStudent + "/" + idPeriodCourse,
+      {
+        mode: "cors",
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          mark,
+        }),
+      }
+    );
+    const resJson = await res.json();
+    return resJson;
+  } catch (error) {
+    return null;
+  }
+};
+
+// Periods
+// -- Get period per course
+
+export const getPeriodCourse = async (
+  idStaff: string,
+  academic: string,
+  idCourse: string,
+  idPeriod: string
+) => {
+  try {
+    const res = await fetch(
+      apiUrl +
+        "period/" +
+        academic +
+        "/" +
+        idCourse +
+        "/" +
+        idPeriod +
+        "/" +
+        idStaff,
+      {
+        mode: "cors",
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      }
+    );
+    const resJson = await res.json();
+    return resJson;
+  } catch (error) {
+    return null;
+  }
+};
+
 export const isUserConnected = (user: any): boolean => {
   let today = Date.now();
   let expire = jwtDecode(JSON.parse(user).token).exp * 1000;

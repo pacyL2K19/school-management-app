@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
-import RNPickerSelect from "react-native-picker-select";
 import ModalDropdown from "react-native-modal-dropdown";
 
 const Remark: React.FC = () => {
+  const [details, setDetails] = useState(null);
   return (
     <View style={styles.header}>
-      <ModalDropdown options={['option 1', 'option 2']}/>
-      {/* <RNPickerSelect
-        onValueChange={(value) => console.log(value)}
-        items={[
-          { label: "Football", value: "football" },
-          { label: "Baseball", value: "baseball" },
-          { label: "Hockey", value: "hockey" },
-        ]}
-      /> */}
+      <Text style={{marginVertical: 10}}>Annee Academique</Text>
+      <ModalDropdown 
+        options={["2020-2021", "2019-2020"]}
+        style={{
+          backgroundColor: "white",
+          padding: 10,
+          borderRadius: 5
+        }}
+        textStyle={{
+          fontSize: 14
+        }}
+        dropdownStyle={{
+          width: 100
+        }}
+        dropdownTextStyle={{
+          fontSize: 12
+        }}
+      />
     </View>
   );
 };
@@ -24,7 +33,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   header: {
-    paddingTop: 200,
     paddingHorizontal: 20,
   },
 });

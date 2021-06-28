@@ -42,7 +42,11 @@ export const getSchools = async () => {
   }
 };
 
-export const getSchool = async (idSchool: string, idStaff: string) => {
+export const getSchool = async (
+  idSchool: string | undefined,
+  idStaff: string | undefined,
+  token: string | undefined
+) => {
   try {
     const res = await fetch(apiUrl + "school/" + idSchool + "/" + idStaff, {
       mode: "cors",
@@ -50,6 +54,7 @@ export const getSchool = async (idSchool: string, idStaff: string) => {
       headers: {
         Accept: "application/json",
         "Content-type": "application/json",
+        Authorization: "Bearer " + token,
       },
     });
     const resJson = await res.json();
@@ -59,7 +64,10 @@ export const getSchool = async (idSchool: string, idStaff: string) => {
 
 // Classes
 
-export const getClasses = async (idStaff: string) => {
+export const getClasses = async (
+  idStaff: string | undefined,
+  token: string | undefined
+) => {
   try {
     const res = await fetch(apiUrl + "class/classes/" + idStaff, {
       mode: "cors",
@@ -67,6 +75,7 @@ export const getClasses = async (idStaff: string) => {
       headers: {
         Accept: "application/json",
         "Content-type": "application/json",
+        Authorization: "Bearer " + token,
       },
     });
     const resJson = await res.json();
@@ -129,7 +138,8 @@ export const markStudent = async (
   idStaff: string,
   idStudent: string,
   idPeriodCourse: string,
-  mark: number
+  mark: number,
+  token: string | undefined
 ) => {
   try {
     const res = await fetch(
@@ -140,6 +150,7 @@ export const markStudent = async (
         headers: {
           Accept: "application/json",
           "Content-type": "application/json",
+          Authorization: "Bearer " + token,
         },
         body: JSON.stringify({
           mark,
@@ -157,10 +168,11 @@ export const markStudent = async (
 // -- Get period per course
 
 export const getPeriodCourse = async (
-  idStaff: string,
-  academic: string,
-  idCourse: string,
-  idPeriod: string
+  idStaff: string | undefined,
+  academic: string | undefined,
+  idCourse: string | undefined,
+  idPeriod: string | undefined,
+  token: string | undefined
 ) => {
   try {
     const res = await fetch(
@@ -179,6 +191,7 @@ export const getPeriodCourse = async (
         headers: {
           Accept: "application/json",
           "Content-type": "application/json",
+          Authorization: "Bearer " + token,
         },
       }
     );
@@ -191,7 +204,10 @@ export const getPeriodCourse = async (
 
 // -- Get general periods
 
-export const getPeriods = async (idStaff: string) => {
+export const getPeriods = async (
+  idStaff: string | undefined,
+  token: string | undefined
+) => {
   try {
     const res = await fetch(apiUrl + "period/periods/" + "/" + idStaff, {
       mode: "cors",
@@ -199,6 +215,7 @@ export const getPeriods = async (idStaff: string) => {
       headers: {
         Accept: "application/json",
         "Content-type": "application/json",
+        Authorization: "Bearer " + token,
       },
     });
     const resJson = await res.json();
@@ -210,7 +227,10 @@ export const getPeriods = async (idStaff: string) => {
 
 // Remark stores
 
-export const getRemarkStore = async (idStaff: string) => {
+export const getRemarkStore = async (
+  idStaff: string | undefined,
+  token: string | undefined
+) => {
   try {
     const res = await fetch(apiUrl + "remark/remarks/" + idStaff, {
       mode: "cors",
@@ -218,6 +238,7 @@ export const getRemarkStore = async (idStaff: string) => {
       headers: {
         Accept: "application/json",
         "Content-type": "application/json",
+        Authorization: "Bearer " + token,
       },
     });
     const resJson = await res.json();

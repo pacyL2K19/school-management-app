@@ -4,24 +4,46 @@ import ModalDropdown from "react-native-modal-dropdown";
 
 const Remark: React.FC = () => {
   const [details, setDetails] = useState(null);
+  const [remarks, setRemarks] = useState(null);
+  const [comment, setComment] = useState("");
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [students, setStudents] = useState(null);
   return (
     <View style={styles.header}>
-      <Text style={{marginVertical: 10}}>Annee Academique</Text>
-      <ModalDropdown 
+      <Text style={{ marginVertical: 10 }}>Annee Academique</Text>
+      <ModalDropdown
         options={["2020-2021", "2019-2020"]}
         style={{
           backgroundColor: "white",
           padding: 10,
-          borderRadius: 5
+          borderRadius: 5,
         }}
         textStyle={{
-          fontSize: 14
+          fontSize: 14,
         }}
         dropdownStyle={{
-          width: 100
+          width: 100,
         }}
         dropdownTextStyle={{
-          fontSize: 12
+          fontSize: 12,
+        }}
+      />
+      <Text style={{ marginVertical: 10 }}>Type de faute</Text>
+      <ModalDropdown
+        options={["2020-2021", "2019-2020"]}
+        style={{
+          backgroundColor: "white",
+          padding: 10,
+          borderRadius: 5,
+        }}
+        textStyle={{
+          fontSize: 14,
+        }}
+        dropdownStyle={{
+          width: 100,
+        }}
+        dropdownTextStyle={{
+          fontSize: 12,
         }}
       />
     </View>

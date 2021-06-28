@@ -22,31 +22,26 @@ const SearchBar: React.FC = () => {
     e: NativeSyntheticEvent<TextInputChangeEventData>
   ) => {
     setKeyword(e.nativeEvent.text);
-    if (keyword === "") {
-      setListUser(null);
-      setKeyword(" ")
-    } else {
-      setTimeout(() => {
-        search(accountInfo?.teachearId, keyword, accountInfo?.token)
-          .then((res) => {
-            if (res.success) {
-              const newUsers = [];
-              res.students.forEach((l) => {
-                newUsers.push({
-                  id: l.id,
-                  name: l.FNamr + " " + l.LName + " " + l.MName,
-                });
+    setTimeout(() => {
+      search(accountInfo?.teachearId, keyword, accountInfo?.token)
+        .then((res) => {
+          if (res.success) {
+            const newUsers = [];
+            res.students.forEach((l) => {
+              newUsers.push({
+                id: l.id,
+                name: l.FNamr + " " + l.LName + " " + l.MName,
               });
-              setListUser(newUsers);
-            } else {
-              console.log(res);
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }, 1000);
-    }
+            });
+            setListUser(newUsers);
+          } else {
+            console.log(res);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 1000);
   };
   return (
     <View>

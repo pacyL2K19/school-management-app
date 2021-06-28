@@ -35,6 +35,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "react-native-bouncy-checkbox": "^2.1.2",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-modal-dropdown": "^1.0.0",
     "react-native-paper": "^4.8.1",

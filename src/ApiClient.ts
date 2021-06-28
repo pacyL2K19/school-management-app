@@ -249,6 +249,8 @@ export const addRemark = async (
 };
 
 export const isUserConnected = (user: any): boolean => {
+  console.log(user);
+  
   let today = Date.now();
   let expire = jwtDecode(JSON.parse(user).token).exp * 1000;
   if (expire - today > 0) {

@@ -66,7 +66,17 @@ const _LoginScreen: React.FC<LoginProps> = ({
           address: response?.user.Address,
           token: response?.token,
         });
-        AsyncStorage.setItem("currentUser", JSON.stringify(response.user))
+        AsyncStorage.setItem("currentUser", JSON.stringify({
+          schoolId: response?.user.SchoolId,
+          teachearId: response?.user.id,
+          fName: response?.user.FName,
+          lName: response?.user.LName,
+          mName: response?.user.MName,
+          email: response?.user.Email,
+          phone: response?.user.Phone,
+          address: response?.user.Address,
+          token: response?.token,
+        }))
           .then(() => {
             setLoading(false);
             navigation.navigate("Home");

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   StyleSheet,
   View,
@@ -21,6 +21,10 @@ import {
 import topImg from "../assets/logo.jpg";
 import { whiteColor } from "../core";
 import { NavigationScreenProp } from "react-navigation";
+import { Login } from "../ApiClient";
+import { MyGlobalContext } from "../context/index";
+import { dangerColor } from "../core/theme/colors";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface LoginProps {
   OnUserLogin: Function;
@@ -37,10 +41,56 @@ const _LoginScreen: React.FC<LoginProps> = ({
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [title, setTitle] = useState("Connexion");
+  const [title] = useState("Connexion");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
 
-  const onTapAuthenticate = () => {
-    navigation.navigate("Home");
+  const onTapAuthenticate = async () => {
+    setLoading(true);
+    const response = await Login(email, password);
+    if (response?.success) {
+      console.log(response);
+      if (accountInfo?.schoolId.toString() !== response.user.id.toString()) {
+        setMessage("Cette ecole ne reconnait pas votre compte");
+        setLoading(false);
+      } else {
+        setAccountInfo({
+          schoolId: response?.user.SchoolId,
+          teachearId: response?.user.id,
+          fName: response?.user.FName,
+          lName: response?.user.LName,
+          mName: response?.user.MName,
+          email: response?.user.Email,
+          phone: response?.user.Phone,
+          address: response?.user.Address,
+          token: response?.token,
+        });
+        AsyncStorage.setItem("currentUser", JSON.stringify({
+          schoolId: response?.user.SchoolId,
+          teachearId: response?.user.id,
+          fName: response?.user.FName,
+          lName: response?.user.LName,
+          mName: response?.user.MName,
+          email: response?.user.Email,
+          phone: response?.user.Phone,
+          address: response?.user.Address,
+          token: response?.token,
+        }))
+          .then(() => {
+            setLoading(false);
+            navigation.navigate("Home");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    } else {
+      setMessage("Email ou mot de passe incorrect, veuillez reessayer");
+      setEmail("");
+      setPassword("");
+      setLoading(false);
+    }
   };
 
   return (
@@ -70,11 +120,16 @@ const _LoginScreen: React.FC<LoginProps> = ({
           isSecure={true}
         />
         <ButtonWithTitle
-          title={title}
+          title={loading ? "Loading ..." : "Connexion"}
           height={50}
           width={Dimensions.get("window").width - 60}
           onTap={onTapAuthenticate}
         />
+        <View style={{ backgroundColor: dangerColor, marginTop: 20 }}>
+          {message !== "" && (
+            <Text style={{ color: whiteColor, padding: 10 }}>{message}</Text>
+          )}
+        </View>
       </View>
     </ScrollView>
   );

@@ -32,12 +32,6 @@ export enum TypeOfCotation {
   HOLLIDAY_WORK = "Travaux des vaccances",
 }
 
-// export enum NotificationCategory {
-//   LATE_UPDATE = "Mise a jour en retard",
-//   PROFESORAL_BODY_MESSAGE = "Au corps professoral",
-
-// }
-
 interface Identity {
   name: string;
   firstName: string;
@@ -91,6 +85,18 @@ interface Absence {
   justified?: boolean;
 }
 
+export interface AccountInfo {
+  schoolId: string;
+  teachearId: string;
+  fName?: string;
+  lName?: string;
+  mName?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  token?: string;
+}
+
 type Cotation = {
   student: Student;
   course: Course;
@@ -109,9 +115,10 @@ type Student = {
 
 type School = {
   label: string;
-  slogan: string;
-  id: string,
-  onPress: (id: string) => void
+  slogan?: string;
+  id: string;
+  source?: string;
+  onPress: (id: string) => void;
 };
 
 type Notification = {
@@ -121,5 +128,10 @@ type Notification = {
   lineColor?: string;
   description?: string;
   seen?: boolean;
-  severityLevel?: "LOW" | "HIGH" | "MEDIUM"
-}
+  severityLevel?: "LOW" | "HIGH" | "MEDIUM";
+};
+
+type GlobalContent = {
+  accountInfo: AccountInfo | null;
+  setAccountInfo: (c: AccountInfo) => void;
+};

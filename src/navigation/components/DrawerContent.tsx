@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, StyleSheet, Text, Alert } from "react-native";
 
 import { DrawerContentScrollView } from "@react-navigation/drawer";
@@ -11,6 +11,7 @@ import { Avatar } from "react-native-paper";
 
 import avatar from "../../assets/teacher.png";
 import { NavigationScreenProp } from "react-navigation";
+import { MyGlobalContext } from "../../context";
 
 interface Props {
   navigation: NavigationScreenProp<any, any>;
@@ -18,6 +19,7 @@ interface Props {
 
 const DrawerContent = (props: Props) => {
   const [user, setUser] = useState({});
+  const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
@@ -44,9 +46,9 @@ const DrawerContent = (props: Props) => {
                 source={avatar}
                 size={80}
               />
-              <Text style={{ fontSize: 20, marginTop: 15 }}>User</Text>
-              <Text>wrong@email.com</Text>
-              <Text>+243 999 999 999</Text>
+              <Text style={{ fontSize: 20, marginTop: 15 }}>{accountInfo?.fName + " " + accountInfo?.lName}</Text>
+              <Text>{accountInfo?.email}</Text>
+              <Text>{accountInfo?.phone}</Text>
             </View>
             <Drawer.Section>
               <Drawer.Item

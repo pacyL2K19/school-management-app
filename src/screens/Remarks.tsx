@@ -13,7 +13,7 @@ const Remark: React.FC = () => {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [students, setStudents] = useState(null);
   const { accountInfo, setAccountInfo } = useContext(MyGlobalContext);
-  const [selectedRem, setSelectedRem] = useState();
+  const [selectedRem, setSelectedRem] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
